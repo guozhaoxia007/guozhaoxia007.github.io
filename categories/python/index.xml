@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>喵大人</title>
-    <link>http://guozhaoxia007.github.io/</link>
-    <description>Recent content on 喵大人</description>
+    <title>Python on 喵大人</title>
+    <link>http://guozhaoxia007.github.io/categories/python/</link>
+    <description>Recent content in Python on 喵大人</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Feb 2016 23:18:34 +0800</lastBuildDate>
-    <atom:link href="http://guozhaoxia007.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://guozhaoxia007.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>pytz</title>
@@ -167,15 +167,6 @@ def datetime_to_unixtime(year, month, day, hour=0, minute=0, second=0, tzinfo=&a
 epochtime转datetime，datetime带tzinfo才知道转给哪个时区的人看
 datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>about</title>
-      <link>http://guozhaoxia007.github.io/about/</link>
-      <pubDate>Thu, 18 Feb 2016 22:31:46 +0800</pubDate>
-      
-      <guid>http://guozhaoxia007.github.io/about/</guid>
-      <description></description>
     </item>
     
   </channel>
