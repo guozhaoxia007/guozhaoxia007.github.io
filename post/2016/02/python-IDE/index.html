@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://guozhaoxia007.github.io/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://guozhaoxia007.github.io/index.xml" type="application/rss+xml" title="喵大人">
+<title>python IDE - 喵大人</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="path" href="http://guozhaoxia007.github.io/">[喵大人]</a>
+    <span class="caret">Blog</span>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-02-22">February 22, 2016</time></span>
+
+
+    <span class="key">in</span>
+    <span class="val">
+
+        <a href="http://guozhaoxia007.github.io/categories/python">python</a>
+
+        <a href="http://guozhaoxia007.github.io/categories/ide">IDE</a>
+
+    </span>
+
+
+  </div>
+  <h1 class="headline" itemprop="headline">python IDE</h1>
+  <section class="body" itemprop="articleBody">
+    
+
+<h2 id="vim:58cf1fc3279828b22be4c0dc57e169e6">VIM</h2>
+
+<h4 id="1-参考链接:58cf1fc3279828b22be4c0dc57e169e6">1. 参考链接：</h4>
+
+<p><a href="https://github.com/yangyangwithgnu/use_vim_as_ide">https://github.com/yangyangwithgnu/use_vim_as_ide</a>
+<a href="https://github.com/spf13/spf13-vim">https://github.com/spf13/spf13-vim</a></p>
+
+<h4 id="2-install:58cf1fc3279828b22be4c0dc57e169e6">2. install</h4>
+
+<p>sudo pip install pyflakes</p>
+
+<p>sudo pip install pylint</p>
+
+<p>sudo pip install pep8</p>
+
+<p>或者使用这个vim插件</p>
+
+<p><a href="https://github.com/scrooloose/syntastic">https://github.com/scrooloose/syntastic</a></p>
+
+<h4 id="3-我的vimrc:58cf1fc3279828b22be4c0dc57e169e6">3. 我的vimrc</h4>
+
+<pre><code>call pathogen#infect()
+
+syntax enable
+syntax on
+set background=dark
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set laststatus=2
+set ruler
+&quot; set cursorcolumn &quot; 突出显示当前列
+set cursorline &quot; 突出显示当前行
+set hlsearch
+set incsearch
+set ignorecase
+set autoindent
+set nowrap
+set showcmd       &quot; 显示输入命令
+let g:solarized_termcolors=16
+colorscheme solarized
+set textwidth=79
+autocmd FileType text setlocal textwidth=78
+&quot; 一旦一行的字符超出79个的话就把那些字符的背景设为红色
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%80v.\+/
+
+filetype on &quot; 检测文件类型
+filetype indent on &quot; 针对不同的文件类型采用不同的缩进格式
+filetype plugin on &quot; 允许插件
+filetype plugin indent on &quot; 启动自动补全
+
+set autoread &quot; 文件修改之后自动载入
+set shortmess=atI &quot; 启动的时候不显示那个援助索马里儿童的提示
+set scrolloff=7 &quot; 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set ffs=unix,dos,mac &quot; Use Unix as the standard file type
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_highlighting=1
+let g:syntastic_python_checkers=['pep8'] &quot; pyflakes, pylint, pep8
+let g:syntastic_python_pylint_args='--disable=C0111'
+</code></pre>
+
+<h2 id="pycharm:58cf1fc3279828b22be4c0dc57e169e6">PyCharm</h2>
+
+<h2 id="sublime-text-2:58cf1fc3279828b22be4c0dc57e169e6">Sublime Text 2</h2>
+
+  </section>
+</article>
+
+</main>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2016  喵大人 - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+
