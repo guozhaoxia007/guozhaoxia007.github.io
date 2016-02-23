@@ -91,7 +91,56 @@ let g:syntastic_python_pylint_args=&#39;--disable=C0111&#39;
 
 &lt;h2 id=&#34;pycharm:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;PyCharm&lt;/h2&gt;
 
+&lt;h4 id=&#34;参考链接:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/u013088062/article/details/50100121&#34;&gt;http://blog.csdn.net/u013088062/article/details/50100121&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;操作步骤:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Inspections页面，键入PEP8来找到所有相关选项，在对应的下拉菜单中选中warning选项；在Ignore erros中添加可忽略警告，C0111&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Auto Import中选择Python下的Show import popup&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的 File Encoding中IDE Encoding和Project Encoding都使用UTF-8&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;我的settings文件:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/guozhaoxia007/guozhaoxia-hugo-blog/tree/master/content/post/2016/02&#34;&gt;settings.jar&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;sublime-text-2:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;Sublime Text 2&lt;/h2&gt;
+
+&lt;h4 id=&#34;参考链接-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
+
+&lt;h4 id=&#34;操作步骤-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ctrl+Shift+p打开命令面板输入install，就可以看到安装列表&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装以下插件：sublime linter, pylinter 或 python flake8 lint&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;我的settings文件-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;auto_indent&amp;quot;: true,
+    &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Twilight.tmTheme&amp;quot;,
+    &amp;quot;default_line_ending&amp;quot;: &amp;quot;unix&amp;quot;,
+    &amp;quot;detect_indentation&amp;quot;: true,
+    &amp;quot;font_size&amp;quot;: 15.0,
+    &amp;quot;ignored_packages&amp;quot;:
+    [
+        &amp;quot;Vintage&amp;quot;
+    ],
+    &amp;quot;indent_to_bracket&amp;quot;: false,
+    &amp;quot;smart_indent&amp;quot;: true,
+    &amp;quot;tab_size&amp;quot;: 4,
+    &amp;quot;translate_tabs_to_spaces&amp;quot;: true,
+    &amp;quot;trim_automatic_white_space&amp;quot;: true,
+    &amp;quot;use_tab_stops&amp;quot;: true
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
