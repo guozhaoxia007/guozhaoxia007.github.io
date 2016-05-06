@@ -6,8 +6,182 @@
     <description>Recent content on 喵大人</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Feb 2016 19:21:24 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Apr 2016 16:05:10 +0800</lastBuildDate>
     <atom:link href="http://guozhaoxia007.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Python-ORM</title>
+      <link>http://guozhaoxia007.github.io/post/2016/04/python-orm/</link>
+      <pubDate>Wed, 13 Apr 2016 16:05:10 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/04/python-orm/</guid>
+      <description>
+
+&lt;h4 id=&#34;list:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;list&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;a href=&#34;http://docs.sqlalchemy.org/en/rel_1_0/contents.html&#34;&gt;SQLALchemy&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;&lt;a href=&#34;https://orator-orm.com/docs/0.8/basic_usage.html&#34;&gt;Orator&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;&lt;a href=&#34;http://docs.peewee-orm.com/en/latest/index.html&#34;&gt;Peewee&lt;/a&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orm&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;query builder&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;schema builder&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;raw sql&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;transaction&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;读写分离&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;connection pool&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;multi connection&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;extensions&lt;/td&gt;
+&lt;td&gt;simple Validators(event listener)&amp;hellip;&lt;/td&gt;
+&lt;td&gt;Cache, to json&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;demo:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;demo&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/guozhaoxia007/python-orm&#34;&gt;https://github.com/guozhaoxia007/python-orm&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;其他产品:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;其他产品&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.djangoproject.com/ja/1.9/topics/db/&#34;&gt;Django ORM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ponyorm.com/&#34;&gt;PonyORM&lt;/a&gt; (not free)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sqlobject.org/&#34;&gt;SQLObject&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;links:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;links&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.fullstackpython.com/object-relational-mappers-orms.html&#34;&gt;https://www.fullstackpython.com/object-relational-mappers-orms.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sloria/PythonORMSleepy&#34;&gt;https://github.com/sloria/PythonORMSleepy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mysql分表</title>
+      <link>http://guozhaoxia007.github.io/post/2016/02/mysql_merge/</link>
+      <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/02/mysql_merge/</guid>
+      <description>
+
+&lt;h4 id=&#34;需求:5175bc9dd82baf308939b633d56bbf86&#34;&gt;需求&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;提高插入查询速度&lt;/li&gt;
+&lt;li&gt;便于归档&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;数据容量估算:5175bc9dd82baf308939b633d56bbf86&#34;&gt;数据容量估算&lt;/h4&gt;
+
+&lt;p&gt;5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G&lt;/strong&gt;
+&lt;strong&gt;即一月产生：4亿条记录，30G存储&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。&lt;/p&gt;
+
+&lt;h4 id=&#34;产品调研:5175bc9dd82baf308939b633d56bbf86&#34;&gt;产品调研&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;oneproxy&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对应用透明&lt;/li&gt;
+&lt;li&gt;支持二级分表(tid, timestamp)&lt;/li&gt;
+&lt;li&gt;多种分表方法(hash, range)&lt;/li&gt;
+&lt;li&gt;使用简单方便&lt;/li&gt;
+&lt;li&gt;性能测试，大大提高查询速度，插入速度也不会大的影响&lt;/li&gt;
+&lt;li&gt;由于使用时间分表，极大方便归档&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需手动创建子表&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;mysql merge&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对应用透明&lt;/li&gt;
+&lt;li&gt;无需引入第三方软件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;子表需为MyISAM引擎&lt;/li&gt;
+&lt;li&gt;无法使用表字段分表（即无法使用时间分表，只能人工分表）&lt;/li&gt;
+&lt;li&gt;需手动创建子表&lt;/li&gt;
+&lt;li&gt;一级分表&lt;/li&gt;
+&lt;li&gt;MERGE storage engine.  User-defined partitioning and the MERGE storage engine are not compatible.
+Tables using the MERGE storage engine cannot be partitioned. Partitioned tables cannot be merged.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;结论:5175bc9dd82baf308939b633d56bbf86&#34;&gt;结论&lt;/h4&gt;
+</description>
+    </item>
     
     <item>
       <title>hugo</title>
@@ -170,7 +344,17 @@ let g:syntastic_python_pylint_args=&#39;--disable=C0111&#39;
       <pubDate>Sun, 21 Feb 2016 11:09:30 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/booklist/</guid>
-      <description></description>
+      <description>
+
+&lt;h4 id=&#34;booklist:674ddf763791ba6f95af85355be367de&#34;&gt;booklist&lt;/h4&gt;
+
+&lt;h4 id=&#34;todo:674ddf763791ba6f95af85355be367de&#34;&gt;TODO&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;golang&lt;/li&gt;
+&lt;li&gt;mysql&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -519,6 +703,45 @@ datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间&
       
       <guid>http://guozhaoxia007.github.io/about/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Sphinx</title>
+      <link>http://guozhaoxia007.github.io/post/2016/03/sphinx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/03/sphinx/</guid>
+      <description>
+
+&lt;h4 id=&#34;sphinx:75fad5abad9734f803f0fb7f6df7e6a9&#34;&gt;Sphinx&lt;/h4&gt;
+
+&lt;h4 id=&#34;read-the-docs:75fad5abad9734f803f0fb7f6df7e6a9&#34;&gt;Read the docs&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>成都一年</title>
+      <link>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</guid>
+      <description>&lt;p&gt;时间过得真快，转眼就到成都一年了，想想来成都之前的想象及计划，不尽理想，有些事情也被某人一语成谶。
+2015.3.22下午和静静一起到达成都，印象深刻的是从北京到成都，换了一个环境，反差还是有一点大，成都老城区并不像现在繁华大都市一样，高楼林立，（车水马龙到是真的，太堵了），
+市区内稍显老旧，当时天气已经开始热起来了，但是从北方来的我们依然穿的很厚，而行李还未到达。打车到了已经租好的房子那里，是个老小区，树木荫荫，仿佛心情一样不是那么明朗。
+说不清是对北京的依恋还是对未来的茫然，有点不知所措。
+一周之后，山哥，磊哥，洋哥来了，小小的两居室显得热闹起来了
+再半月之后，他们都回去了，就剩我一个人，突然冷清下来，觉得还是有点伤心。
+虽然新同事也都挺好，但是感觉始终无法融入，也许是年龄大了的关系，不再像几年前一样每天热情满满去工作，去玩，去交新朋友。&lt;/p&gt;
+
+&lt;p&gt;来成都之后，所有项目都要短期内交接完成，从以前的只会听命的程序媛到事事都要负责的项目经理，压力很大，每天依然很忙。经常忙到诺大的办公室只剩我一人。
+还有一点觉得很不习惯的是，这里的程序员竟然不习惯加班，一下班大家都走了，在北京那会，下班之后不管有事没事，办公室总是有人，会加班到很晚。也许这也是成都
+和北京氛围不一样的原因。&lt;/p&gt;
+
+&lt;p&gt;关于我为什么要来成都，原因种种，在北京4年半，事情种种，不愿提及，希望能换个环境，也许会有不同的经历。
+我一直是一个很独立的人，作为女生这样的性格也许并不太好，我愿意接受新朋友，但是也会介意朋友试图更深次的接近我，也就是防卫心理太重。&lt;/p&gt;
+
+&lt;p&gt;梦里不知身是客&lt;/p&gt;
+</description>
     </item>
     
   </channel>

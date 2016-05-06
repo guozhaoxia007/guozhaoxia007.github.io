@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on 喵大人</title>
+    <link>http://guozhaoxia007.github.io/categories/mysql/</link>
+    <description>Recent content in Mysql on 喵大人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Feb 2016 11:08:29 +0800</lastBuildDate>
+    <atom:link href="http://guozhaoxia007.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mysql分表</title>
+      <link>http://guozhaoxia007.github.io/post/2016/02/mysql_merge/</link>
+      <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/02/mysql_merge/</guid>
+      <description>
+
+&lt;h4 id=&#34;需求:5175bc9dd82baf308939b633d56bbf86&#34;&gt;需求&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;提高插入查询速度&lt;/li&gt;
+&lt;li&gt;便于归档&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;数据容量估算:5175bc9dd82baf308939b633d56bbf86&#34;&gt;数据容量估算&lt;/h4&gt;
+
+&lt;p&gt;5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G&lt;/strong&gt;
+&lt;strong&gt;即一月产生：4亿条记录，30G存储&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。&lt;/p&gt;
+
+&lt;h4 id=&#34;产品调研:5175bc9dd82baf308939b633d56bbf86&#34;&gt;产品调研&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;oneproxy&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对应用透明&lt;/li&gt;
+&lt;li&gt;支持二级分表(tid, timestamp)&lt;/li&gt;
+&lt;li&gt;多种分表方法(hash, range)&lt;/li&gt;
+&lt;li&gt;使用简单方便&lt;/li&gt;
+&lt;li&gt;性能测试，大大提高查询速度，插入速度也不会大的影响&lt;/li&gt;
+&lt;li&gt;由于使用时间分表，极大方便归档&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需手动创建子表&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;mysql merge&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对应用透明&lt;/li&gt;
+&lt;li&gt;无需引入第三方软件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;子表需为MyISAM引擎&lt;/li&gt;
+&lt;li&gt;无法使用表字段分表（即无法使用时间分表，只能人工分表）&lt;/li&gt;
+&lt;li&gt;需手动创建子表&lt;/li&gt;
+&lt;li&gt;一级分表&lt;/li&gt;
+&lt;li&gt;MERGE storage engine.  User-defined partitioning and the MERGE storage engine are not compatible.
+Tables using the MERGE storage engine cannot be partitioned. Partitioned tables cannot be merged.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;结论:5175bc9dd82baf308939b633d56bbf86&#34;&gt;结论&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

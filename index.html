@@ -46,6 +46,36 @@
     
       
 <article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/04/python-orm/">Python-ORM</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-04-13">April 13, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    list SQLALchemy Orator Peewee orm Y Y Y query builder Y Y Y schema builder Y Y Y raw sql Y Y Y transaction Y Y Y 读写分离 Y Y Y connection pool Y multi connection Y extensions simple Validators(event listener)&hellip; Cache, to json demo https://github.com/guozhaoxia007/python-orm 其他产品 Django ORM PonyORM (not free) SQLObject links https://www.fullstackpython.com/object-relational-mappers-orms.html https://github.com/sloria/PythonORMSleepy 
+  </section>
+</article>
+
+    
+      
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/02/mysql_merge/">mysql分表</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-02-24">February 24, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    需求 提高插入查询速度 便于归档 数据容量估算 5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes 即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G 即一月产生：4亿条记录，30G存储 根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。 产品调研 oneproxy 优点： 对应用透明 支持二级分表(tid, timestamp) 多种分表方法(hash, range) 使用简单方便 性能测试，大大提高查询速度，插入速度也不会大的影响 由于使用时间分表，极大方便归档 缺点： 需手动创建子表 mysql merge 优点： 对应用透明 无需引入第三方软件 缺点： 子表需为MyISAM引擎 无法使用表字段分表（即无法使用时间分表，只能人工分表） 需手动创建子表 一级分表 MERGE storage engine. User-defined partitioning and the MERGE storage engine are not compatible. Tables using the MERGE storage engine cannot be partitioned.  <a href="/post/2016/02/mysql_merge/">Read More...</a>
+  </section>
+</article>
+
+    
+      
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
   <h2 class="headline" itemprop="headline"><a href="/post/2016/02/hugo/">hugo</a></h2>
   <div class="meta">
 
@@ -55,36 +85,6 @@
   </div>
   <section class="summary">
     启动本地server hugo server -t hugo-base16-theme 生成静态文件到public, baseUrl可以在.git中配置 hugo -t hugo-base16-theme &ndash;baseUrl=&ldquo;http://guozhaoxia007.github.io&quot; 
-  </section>
-</article>
-
-    
-      
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/2016/02/python-IDE/">python IDE</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-02-22">February 22, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    VIM 1. 参考链接： https://github.com/yangyangwithgnu/use_vim_as_ide https://github.com/spf13/spf13-vim 2. install sudo pip install pyflakes sudo pip install pylint sudo pip install pep8 或者使用这个vim插件 https://github.com/scrooloose/syntastic 3. 我的vimrc call pathogen#infect() syntax enable syntax on set background=dark set number set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set laststatus=2 set ruler &quot; set cursorcolumn &quot; 突出显示当前列 set cursorline &quot; 突出显示当前行 set hlsearch set incsearch set ignorecase set autoindent set nowrap set showcmd &quot; 显示输入命令 let g:solarized_termcolors=16  <a href="/post/2016/02/python-IDE/">Read More...</a>
-  </section>
-</article>
-
-    
-      
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/2016/booklist/">booklist</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-02-21">February 21, 2016</time></span>
-
-  </div>
-  <section class="summary">
-     
   </section>
 </article>
 
@@ -104,6 +104,21 @@
     
     <h2 class="category">
       <a href="http://guozhaoxia007.github.io/categories/ide">Ide</a>
+      <small>(1)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://guozhaoxia007.github.io/categories/merge">Merge</a>
+      <small>(1)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://guozhaoxia007.github.io/categories/mysql">Mysql</a>
+      <small>(1)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://guozhaoxia007.github.io/categories/oneproxy">Oneproxy</a>
       <small>(1)</small>
     </h2>
     

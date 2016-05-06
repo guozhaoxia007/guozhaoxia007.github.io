@@ -28,6 +28,36 @@
   
     
 <article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/04/python-orm/">Python-ORM</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-04-13">April 13, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    list SQLALchemy Orator Peewee orm Y Y Y query builder Y Y Y schema builder Y Y Y raw sql Y Y Y transaction Y Y Y 读写分离 Y Y Y connection pool Y multi connection Y extensions simple Validators(event listener)&hellip; Cache, to json demo https://github.com/guozhaoxia007/python-orm 其他产品 Django ORM PonyORM (not free) SQLObject links https://www.fullstackpython.com/object-relational-mappers-orms.html https://github.com/sloria/PythonORMSleepy 
+  </section>
+</article>
+
+  
+    
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/02/mysql_merge/">mysql分表</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-02-24">February 24, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    需求 提高插入查询速度 便于归档 数据容量估算 5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes 即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G 即一月产生：4亿条记录，30G存储 根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。 产品调研 oneproxy 优点： 对应用透明 支持二级分表(tid, timestamp) 多种分表方法(hash, range) 使用简单方便 性能测试，大大提高查询速度，插入速度也不会大的影响 由于使用时间分表，极大方便归档 缺点： 需手动创建子表 mysql merge 优点： 对应用透明 无需引入第三方软件 缺点： 子表需为MyISAM引擎 无法使用表字段分表（即无法使用时间分表，只能人工分表） 需手动创建子表 一级分表 MERGE storage engine. User-defined partitioning and the MERGE storage engine are not compatible. Tables using the MERGE storage engine cannot be partitioned.  <a href="/post/2016/02/mysql_merge/">Read More...</a>
+  </section>
+</article>
+
+  
+    
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
   <h2 class="headline" itemprop="headline"><a href="/post/2016/02/hugo/">hugo</a></h2>
   <div class="meta">
 
@@ -66,7 +96,7 @@
 
   </div>
   <section class="summary">
-     
+    booklist TODO golang mysql 
   </section>
 </article>
 
@@ -97,6 +127,30 @@
   </div>
   <section class="summary">
     pytz使用 使用场景 查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time 实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 ['UTC', 'US/Eastern', 'Asia/Shanghai', 'Asia/Kolkata', 'Asia/Jakarta'] fmt = '%Y-%m-%d %H:%M:%S %Z%z' for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST+0800 2015-04-01 08:00:00 IST+0530 2015-04-01 08:00:00 WIB+0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST+0800 2015-12-01 08:00:00 IST+0530 2015-12-01 08:00:00 WIB+0700 实验2 In [146]:  <a href="/post/2016/02/pytz/">Read More...</a>
+  </section>
+</article>
+
+  
+    
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/03/sphinx/">Sphinx</a></h2>
+  <div class="meta">
+
+  </div>
+  <section class="summary">
+    Sphinx Read the docs 
+  </section>
+</article>
+
+  
+    
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/">成都一年</a></h2>
+  <div class="meta">
+
+  </div>
+  <section class="summary">
+    时间过得真快，转眼就到成都一年了，想想来成都之前的想象及计划，不尽理想，有些事情也被某人一语成谶。 2015.3.22下午和静静一起到达成都，印象深刻的是从北京到成都，换了一个环境，反差还是有一点大，成都老城区并不像现在繁华大都市一样，高楼林立，（车水马龙到是真的，太堵了）， 市区内稍显老旧，当时天气已经开始热起来了，但是从北方来的我们依然穿的很厚，而行李还未到达。打车到了已经租好的房子那里，是个老小区，树木荫荫，仿佛心情一样不是那么明朗。 说不清是对北京的依恋还是对未来的茫然，有点不知所措。 一周之后，山哥，磊哥，洋哥来了，小小的两居室显得热闹起来了 再半月之后，他们都回去了，就剩我一个人，突然冷清下来，觉得还是有点伤心。 虽然新同事也都挺好，但是感觉始终无法融入，也许是年龄大了的关系，不再像几年前一样每天热情满满去工作，去玩，去交新朋友。 来成都之后，所有项目都要短期内交接完成，从以前的只会听命的程序媛到事事都要负责的项目经理，压力很大，每天依然很忙。经常忙到诺大的办公室只剩我一人。 还有一点觉得很不习惯的是，这里的程序员竟然不习惯加班，一下班大家都走了，在北京那会，下班之后不管有事没事，办公室总是有人，会加班到很晚。也许这也是成都 和北京氛围不一样的原因。 关于我为什么要来成都，原因种种，在北京4年半，事情种种，不愿提及，希望能换个环境，也许会有不同的经历。 我一直是一个很独立的人，作为女生这样的性格也许并不太好，我愿意接受新朋友，但是也会介意朋友试图更深次的接近我，也就是防卫心理太重。 梦里不知身是客 
   </section>
 </article>
 
