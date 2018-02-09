@@ -16,21 +16,21 @@
 
   
   <meta name="author" content="Zhaoxia Guo" />
-  <meta name="description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700  实验2 In [146]: now = int(time." />
+  <meta name="description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&amp;#39;UTC&amp;#39;, &amp;#39;US/Eastern&amp;#39;, &amp;#39;Asia/Shanghai&amp;#39;, &amp;#39;Asia/Kolkata&amp;#39;, &amp;#39;Asia/Jakarta&amp;#39;] fmt = &amp;#39;%Y-%m-%d%H:%M:%S %Z%z&amp;#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700 实验2 In [146]: now = int(time." />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="pytz" />
-    <meta name="twitter:description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700  实验2 In [146]: now = int(time." />
+    <meta name="twitter:description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&amp;#39;UTC&amp;#39;, &amp;#39;US/Eastern&amp;#39;, &amp;#39;Asia/Shanghai&amp;#39;, &amp;#39;Asia/Kolkata&amp;#39;, &amp;#39;Asia/Jakarta&amp;#39;] fmt = &amp;#39;%Y-%m-%d%H:%M:%S %Z%z&amp;#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700 实验2 In [146]: now = int(time." />
     <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="pytz" />
-  <meta property="og:description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700  实验2 In [146]: now = int(time." />
+  <meta property="og:description" content="pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&amp;#39;UTC&amp;#39;, &amp;#39;US/Eastern&amp;#39;, &amp;#39;Asia/Shanghai&amp;#39;, &amp;#39;Asia/Kolkata&amp;#39;, &amp;#39;Asia/Jakarta&amp;#39;] fmt = &amp;#39;%Y-%m-%d%H:%M:%S %Z%z&amp;#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700 实验2 In [146]: now = int(time." />
   <meta property="og:url" content="http://www.gmiao.top/post/2016/02/pytz/" />
   <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
 
@@ -235,145 +235,123 @@
 </ul>
 
 <h2 id="实验1-夏令时和冬令时">实验1，夏令时和冬令时</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 美东、中国标准、印度标准、印尼西部</span>
+[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;UTC&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Kolkata&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Jakarta&#39;</span>]
+fmt <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S %Z%z&#39;</span>
 
-<pre><code># 美东、中国标准、印度标准、印尼西部
-['UTC', 'US/Eastern', 'Asia/Shanghai', 'Asia/Kolkata', 'Asia/Jakarta']
-fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+<span style="color:#66d9ef">for</span> tz <span style="color:#f92672">in</span> timezones:
+    p_tz <span style="color:#f92672">=</span> timezone(tz)
+    loc_dt <span style="color:#f92672">=</span> p_tz<span style="color:#f92672">.</span>localize(datetime(<span style="color:#ae81ff">2015</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>))
+    <span style="color:#66d9ef">print</span> loc_dt<span style="color:#f92672">.</span>strftime(fmt)
 
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0))
-    print loc_dt.strftime(fmt)
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> EDT<span style="color:#f92672">-</span><span style="color:#ae81ff">0400</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> CST<span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> IST<span style="color:#f92672">+</span><span style="color:#ae81ff">0530</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> WIB<span style="color:#f92672">+</span><span style="color:#ae81ff">0700</span>
 
-2015-04-01 08:00:00 EDT-0400
-2015-04-01 08:00:00 CST+0800
-2015-04-01 08:00:00 IST+0530
-2015-04-01 08:00:00 WIB+0700
+<span style="color:#66d9ef">for</span> tz <span style="color:#f92672">in</span> timezones:
+    p_tz <span style="color:#f92672">=</span> timezone(tz)
+    loc_dt <span style="color:#f92672">=</span> p_tz<span style="color:#f92672">.</span>localize(datetime(<span style="color:#ae81ff">2015</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>))
+    <span style="color:#66d9ef">print</span> loc_dt<span style="color:#f92672">.</span>strftime(fmt)
 
-
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0))
-    print loc_dt.strftime(fmt)
-
-2015-12-01 08:00:00 EST-0500
-2015-12-01 08:00:00 CST+0800
-2015-12-01 08:00:00 IST+0530
-2015-12-01 08:00:00 WIB+0700
-</code></pre>
-
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> EST<span style="color:#f92672">-</span><span style="color:#ae81ff">0500</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> CST<span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> IST<span style="color:#f92672">+</span><span style="color:#ae81ff">0530</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span> WIB<span style="color:#f92672">+</span><span style="color:#ae81ff">0700</span></code></pre></div>
 <h2 id="实验2">实验2</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [<span style="color:#ae81ff">146</span>]: now <span style="color:#f92672">=</span> int(time<span style="color:#f92672">.</span>time())
 
-<pre><code>In [146]: now = int(time.time())
+In [<span style="color:#ae81ff">147</span>]: now
+Out[<span style="color:#ae81ff">147</span>]: <span style="color:#ae81ff">1451015286</span>
 
-In [147]: now
-Out[147]: 1451015286
+In [<span style="color:#ae81ff">148</span>]: utc_dt <span style="color:#f92672">=</span> utc<span style="color:#f92672">.</span>localize(datetime<span style="color:#f92672">.</span>utcfromtimestamp(now))
 
-In [148]: utc_dt = utc.localize(datetime.utcfromtimestamp(now))
+In [<span style="color:#ae81ff">149</span>]: utc_dt<span style="color:#f92672">.</span>strftime(fmt)
+Out[<span style="color:#ae81ff">149</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-12-25 03:48:06 UTC+0000&#39;</span>
 
-In [149]: utc_dt.strftime(fmt)
-Out[149]: '2015-12-25 03:48:06 UTC+0000'
-
-In [151]: for tz in timezones:
-    p_tz = timezone(tz)
-    p_dt = p_tz.normalize(utc_dt.astimezone(p_tz))
-    print p_dt.strftime(fmt)
-   .....:
-2015-12-24 22:48:06 EST-0500
-2015-12-25 11:48:06 CST+0800
-2015-12-25 09:18:06 IST+0530
-2015-12-25 10:48:06 WIB+0700
-</code></pre>
-
+In [<span style="color:#ae81ff">151</span>]: <span style="color:#66d9ef">for</span> tz <span style="color:#f92672">in</span> timezones:
+    p_tz <span style="color:#f92672">=</span> timezone(tz)
+    p_dt <span style="color:#f92672">=</span> p_tz<span style="color:#f92672">.</span>normalize(utc_dt<span style="color:#f92672">.</span>astimezone(p_tz))
+    <span style="color:#66d9ef">print</span> p_dt<span style="color:#f92672">.</span>strftime(fmt)
+   <span style="color:#f92672">.....</span>:
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">24</span> <span style="color:#ae81ff">22</span>:<span style="color:#ae81ff">48</span>:<span style="color:#ae81ff">06</span> EST<span style="color:#f92672">-</span><span style="color:#ae81ff">0500</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">25</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">48</span>:<span style="color:#ae81ff">06</span> CST<span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">25</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">18</span>:<span style="color:#ae81ff">06</span> IST<span style="color:#f92672">+</span><span style="color:#ae81ff">0530</span>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">25</span> <span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">48</span>:<span style="color:#ae81ff">06</span> WIB<span style="color:#f92672">+</span><span style="color:#ae81ff">0700</span></code></pre></div>
 <p>mktime:（使用美东时区的datetime）
 在东8区执行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">int(time<span style="color:#f92672">.</span>mktime(time<span style="color:#f92672">.</span>strptime(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-12-24 22:48:06&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#39;</span>))
 
-<pre><code>int(time.mktime(time.strptime('2015-12-24 22:48:06', '%Y-%m-%d %H:%M:%S'))
-
-1450968486
-</code></pre>
-
+<span style="color:#ae81ff">1450968486</span></code></pre></div>
 <p>在美东时区执行</p>
-
-<pre><code>int(time.mktime(time.strptime('2015-12-24 22:48:06', '%Y-%m-%d %H:%M:%S'))
-1451015286
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">int(time<span style="color:#f92672">.</span>mktime(time<span style="color:#f92672">.</span>strptime(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-12-24 22:48:06&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#39;</span>))
+<span style="color:#ae81ff">1451015286</span></code></pre></div>
 <h2 id="timestamp-datetime">timestamp -&gt; datetime</h2>
-
-<pre><code>def timestamp2datetime(timestamp, tzinfo, fmt=&quot;%Y-%m-%d %H:%M:%S %Z%z&quot;):
-    utc = pytz.utc
-    utc_dt = utc.localize(datetime.utcfromtimestamp(timestamp))
-    tz = timezone(tzinfo)
-    dt = tz.normalize(utc_dt.astimezone(tz))
-    return dt, dt.strftime(fmt)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">timestamp2datetime</span>(timestamp, tzinfo, fmt<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S %Z%z&#34;</span>):
+    utc <span style="color:#f92672">=</span> pytz<span style="color:#f92672">.</span>utc
+    utc_dt <span style="color:#f92672">=</span> utc<span style="color:#f92672">.</span>localize(datetime<span style="color:#f92672">.</span>utcfromtimestamp(timestamp))
+    tz <span style="color:#f92672">=</span> timezone(tzinfo)
+    dt <span style="color:#f92672">=</span> tz<span style="color:#f92672">.</span>normalize(utc_dt<span style="color:#f92672">.</span>astimezone(tz))
+    <span style="color:#66d9ef">return</span> dt, dt<span style="color:#f92672">.</span>strftime(fmt)
     
-In [178]: timestamp2datetime(1451015286, 'Asia/Shanghai')
-Out[178]: '2015-12-25 11:48:06 CST+0800'
+In [<span style="color:#ae81ff">178</span>]: timestamp2datetime(<span style="color:#ae81ff">1451015286</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">178</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-12-25 11:48:06 CST+0800&#39;</span>
 
-In [179]: timestamp2datetime(1451015286, 'US/Eastern')
-Out[179]: '2015-12-24 22:48:06 EST-0500'
-
-</code></pre>
-
+In [<span style="color:#ae81ff">179</span>]: timestamp2datetime(<span style="color:#ae81ff">1451015286</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">179</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-12-24 22:48:06 EST-0500&#39;</span></code></pre></div>
 <p>美国2015.3.8 02:00（当地时间）进入夏令时：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [<span style="color:#ae81ff">181</span>]: timestamp2datetime(<span style="color:#ae81ff">1425794400</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">181</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 01:00:00 EST-0500&#39;</span>
+In [<span style="color:#ae81ff">204</span>]: timestamp2datetime(<span style="color:#ae81ff">1425794400</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">204</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 14:00:00 CST+0800&#39;</span>
 
-<pre><code>In [181]: timestamp2datetime(1425794400, 'US/Eastern')
-Out[181]: '2015-03-08 01:00:00 EST-0500'
-In [204]: timestamp2datetime(1425794400, 'Asia/Shanghai')
-Out[204]: '2015-03-08 14:00:00 CST+0800'
+In [<span style="color:#ae81ff">184</span>]: timestamp2datetime(<span style="color:#ae81ff">1425797999</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">184</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 01:59:59 EST-0500&#39;</span>
+In [<span style="color:#ae81ff">207</span>]: timestamp2datetime(<span style="color:#ae81ff">1425797999</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">207</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 14:59:59 CST+0800&#39;</span>
 
-In [184]: timestamp2datetime(1425797999, 'US/Eastern')
-Out[184]: '2015-03-08 01:59:59 EST-0500'
-In [207]: timestamp2datetime(1425797999, 'Asia/Shanghai')
-Out[207]: '2015-03-08 14:59:59 CST+0800'
-
-In [180]: timestamp2datetime(1425798000, 'US/Eastern')
-Out[180]: '2015-03-08 03:00:00 EDT-0400'  # 注：2点变3点
-In [208]: timestamp2datetime(1425798000, 'Asia/Shanghai')
-Out[208]: '2015-03-08 15:00:00 CST+0800'
-</code></pre>
-
+In [<span style="color:#ae81ff">180</span>]: timestamp2datetime(<span style="color:#ae81ff">1425798000</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">180</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 03:00:00 EDT-0400&#39;</span>  <span style="color:#75715e"># 注：2点变3点</span>
+In [<span style="color:#ae81ff">208</span>]: timestamp2datetime(<span style="color:#ae81ff">1425798000</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">208</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-03-08 15:00:00 CST+0800&#39;</span></code></pre></div>
 <p>美国2015.11.1 02:00（当地时间）进入夏令时：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [<span style="color:#ae81ff">202</span>]: timestamp2datetime(<span style="color:#ae81ff">1446357599</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">202</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-11-01 01:59:59 EDT-0400&#39;</span>
+In [<span style="color:#ae81ff">209</span>]: timestamp2datetime(<span style="color:#ae81ff">1446357599</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">209</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-11-01 13:59:59 CST+0800&#39;</span>
 
-<pre><code>In [202]: timestamp2datetime(1446357599, 'US/Eastern')
-Out[202]: '2015-11-01 01:59:59 EDT-0400'
-In [209]: timestamp2datetime(1446357599, 'Asia/Shanghai')
-Out[209]: '2015-11-01 13:59:59 CST+0800'
-
-In [203]: timestamp2datetime(1446357600, 'US/Eastern')
-Out[203]: '2015-11-01 01:00:00 EST-0500' //注：2点变1点
-In [210]: timestamp2datetime(1446357600, 'Asia/Shanghai')
-Out[210]: '2015-11-01 14:00:00 CST+0800'
-</code></pre>
-
+In [<span style="color:#ae81ff">203</span>]: timestamp2datetime(<span style="color:#ae81ff">1446357600</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;US/Eastern&#39;</span>)
+Out[<span style="color:#ae81ff">203</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-11-01 01:00:00 EST-0500&#39;</span> <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">注：</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">点变</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">点</span>
+In [<span style="color:#ae81ff">210</span>]: timestamp2datetime(<span style="color:#ae81ff">1446357600</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>)
+Out[<span style="color:#ae81ff">210</span>]: <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;2015-11-01 14:00:00 CST+0800&#39;</span></code></pre></div>
 <h2 id="datetime-timestamp">datetime -&gt; timestamp</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">datetime2timestamp</span>(dt):
+    utc_tz <span style="color:#f92672">=</span> timezone(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;UTC&#34;</span>)
+    utc_dt <span style="color:#f92672">=</span> utc_tz<span style="color:#f92672">.</span>normalize(dt<span style="color:#f92672">.</span>astimezone(utc_tz))
+    <span style="color:#66d9ef">return</span> calendar<span style="color:#f92672">.</span>timegm(utc_dt<span style="color:#f92672">.</span>timetuple())
 
-<pre><code>def datetime2timestamp(dt):
-    utc_tz = timezone(&quot;UTC&quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-    return calendar.timegm(utc_dt.timetuple())
 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">datetime_to_unixtime</span>(year, month, day, hour<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, minute<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, second<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, tzinfo<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;Asia/Shanghai&#34;</span>):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    &gt;&gt;&gt; datetime_to_unixtime(2015, 11, 1, hour=1, tzinfo=&#39;US/Eastern&#39;)
+</span><span style="color:#e6db74">    1446357600
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    tz <span style="color:#f92672">=</span> timezone(tzinfo)
+    dt <span style="color:#f92672">=</span> datetime(year, month, day, hour, minute, second)
+    dt <span style="color:#f92672">=</span> tz<span style="color:#f92672">.</span>localize(dt)
+    utc_tz <span style="color:#f92672">=</span> timezone(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;UTC&#34;</span>)
+    utc_dt <span style="color:#f92672">=</span> utc_tz<span style="color:#f92672">.</span>normalize(dt<span style="color:#f92672">.</span>astimezone(utc_tz))
 
-def datetime_to_unixtime(year, month, day, hour=0, minute=0, second=0, tzinfo=&quot;Asia/Shanghai&quot;):
-    &quot;&quot;&quot;
-    &gt;&gt;&gt; datetime_to_unixtime(2015, 11, 1, hour=1, tzinfo='US/Eastern')
-    1446357600
-    &quot;&quot;&quot;
-    tz = timezone(tzinfo)
-    dt = datetime(year, month, day, hour, minute, second)
-    dt = tz.localize(dt)
-    utc_tz = timezone(&quot;UTC&quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-
-    return calendar.timegm(utc_dt.timetuple())
-</code></pre>
-
+    <span style="color:#66d9ef">return</span> calendar<span style="color:#f92672">.</span>timegm(utc_dt<span style="color:#f92672">.</span>timetuple())</code></pre></div>
 <h2 id="总结">总结</h2>
 
-<p>datetime + tzinfo是关键
-epochtime转datetime，datetime带tzinfo才知道转给哪个时区的人看
-datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间</p>
+<blockquote>
+<p>datetime + tzinfo是关键</p>
+
+<p>epochtime转datetime，datetime带tzinfo才知道转给哪个时区的人看</p>
+
+<p>datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间</p>
+</blockquote>
 </article>
     <footer class="post-footer">
       
