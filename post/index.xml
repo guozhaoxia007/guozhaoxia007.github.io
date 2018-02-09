@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 喵大人</title>
+    <title>Posts on 喵大人的博客</title>
     <link>http://guozhaoxia007.github.io/post/</link>
-    <description>Recent content in Posts on 喵大人</description>
+    <description>Recent content in Posts on 喵大人的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 13 Apr 2016 16:05:10 +0800</lastBuildDate>
-    <atom:link href="http://guozhaoxia007.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 08 Feb 2018 15:07:13 +0800</lastBuildDate>
+    
+	<atom:link href="http://guozhaoxia007.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>postgis</title>
+      <link>http://guozhaoxia007.github.io/post/2018/02/date-line/</link>
+      <pubDate>Thu, 08 Feb 2018 15:07:13 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2018/02/date-line/</guid>
+      <description>The date-line and the poles 今天看postgis文档时，说到所有球形形状的计算都不涉及date-line和poles的概念。那么date-line和poles到底是什么，有什么影响？
+先说poles，比较简单，也就是地理极点。对于地球来说就是南极点与北极点。南北极点是唯一的，也比较好确认，也就是行星、卫星或其它较大天体的自转轴与其表面交会的点。
+确定了南北极点，那么纬线也就确认了，0纬线也就是赤道线，与自转轴垂直，往南就是南纬，往北就是北纬，由于赤道与自转轴是垂直关系，所以角度最大是90度，即南纬最大90度，北纬最大90度。看图： 确定了纬线，那么就可以找经线了，经线与纬线是垂直的。也就是，纬线瓜分南北半球，经线瓜分东西半球。那么问题来了，0经线是哪里？在地球上每个国家都把太阳升起的时间当作一天的开始，地球被太阳光照射的半个球面形成白昼，而背着太阳光的另外半个球面便是黑夜。但是由于各国家分布在地球各个地方，加上自转，所以见到太阳的时间是不一样的。讲道理的话，任何一条经线都可以称为0经线，但是这样的话，全球时间就不能统一了。所以后来规定了本初子午线（子午线即经线）作为0经线，它经过了格林威治天文台，本初子午线的对面即180经线就是国际日界线，即国际日期变更线（经过这条线后日期要变），当然为了避免同一国家出现2个日期，所以这条线不是直线，而是绕过一些岛屿啥的，是经过了太平洋的一条折线。
+概念都清楚了，那么这些线对地球人有什么影响呢？最大的影响就是日期与时间的统一。
+“区时系统”规定，地球上每15°经度范围作为一个时区（即太阳1个小时内走过的经度）。 这样，整个地球的表面就被划分为24个时区。各时区的“中央经线”规定为0°（即“本初子午线”）、东西经15°、东西经30°、东西经45°……直到180°经线，在每条中央经线东西两侧各7.5°范围内的所有地点，每一时区都按它的中央子午线来计量时间，即采用它的中央子午线的地方平时，叫做标准时。所以地球上只有24种不同时刻的存在。本初子午线上的地方如果是下午12点，那么在地球背面的地方就是子夜12点。 有了时区系统，问题又来了，假如你坐飞机从西往东越过了日界线，每跨越一个时区，就会把你的表向前拨一个小时加上你旅行消耗的时间，这样当你跨越24个时区回到原地后，你的表比身边的人快了24个小时；相反，当你由东向西周游世界一圈后，你的表就比别人慢24个小时。
+当你在从东向西的航行中,因为你是在追赶太阳,所以就感到白天“加长”了；相反,当你从西向东航行时、由于是背离太阳、所以就好像有点白天“短”了的感觉.这样,你就往往会记错日子,把日历翻错.为了避免这种不方便,1884年起人们决定在太平洋中,也即在东经180度经线附近划一条线,规定当各种交通工具自东向西越过此线后,日期增加1天（例如,由7月31日改为8月1日〕,而由西向东越过此线后,日期减少1天（例如, 由8月1日日改为7月31）</description>
+    </item>
+    
+    <item>
+      <title>postgis</title>
+      <link>http://guozhaoxia007.github.io/post/2018/02/postgis/</link>
+      <pubDate>Wed, 07 Feb 2018 15:07:13 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2018/02/postgis/</guid>
+      <description>Chapter 4. Using PostGIS: Data Management and Queries http://postgis.net/docs/manual-2.3/using_postgis_dbmanagement.html
+4.1. GIS Objects 4.1.1. OpenGIS WKB and WKT OpenGIS定义了两种空间表达对象：the Well-Known Text(WKT) form和the Well-Known Binary(WKB) form. WKT和WKB都包含了对象的类型和坐标。
+WKT举例：
+ POINT(0 0)
+LINESTRING(0 0,1 1,1 2)
+POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))
+MULTIPOINT((0 0),(1 2))
+MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))
+MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,-2 -1,-1 -1)))</description>
+    </item>
+    
+    <item>
+      <title>postgis-2</title>
+      <link>http://guozhaoxia007.github.io/post/2018/02/postgis-2/</link>
+      <pubDate>Wed, 07 Feb 2018 15:07:13 +0800</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2018/02/postgis-2/</guid>
+      <description>0. 创建空间字段准备 CREATE EXTENSION postgis;  -- Geometry -- Method 1 SELECT AddGeometryColumn (&#39;scheme&#39;，&#39;cities&#39;, &#39;the_geom&#39;, 4326, &#39;POINT&#39;, 2); AddGeometryColumn( &amp;lt;schema_name&amp;gt;, &amp;lt;table_name&amp;gt;, &amp;lt;column_name&amp;gt;, &amp;lt;srid&amp;gt;, &amp;lt;type&amp;gt;, &amp;lt;dimension&amp;gt; ) -- Method 2 CREATE TABLE ROADS ( ID int4, ROAD_NAME varchar(25), geom geometry(LINESTRING,4326) ); CREATE TABLE global_points ( id SERIAL PRIMARY KEY, name VARCHAR(64), location GEOGRAPHY(POINT,4326) ); -- Method 3 ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);  -- geography CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINT,4326) ); CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINTZ,4326) );  1.</description>
+    </item>
     
     <item>
       <title>Python-ORM</title>
@@ -15,97 +57,16 @@
       <pubDate>Wed, 13 Apr 2016 16:05:10 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/04/python-orm/</guid>
-      <description>
-
-&lt;h4 id=&#34;list:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;list&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;&lt;a href=&#34;http://docs.sqlalchemy.org/en/rel_1_0/contents.html&#34;&gt;SQLALchemy&lt;/a&gt;&lt;/th&gt;
-&lt;th&gt;&lt;a href=&#34;https://orator-orm.com/docs/0.8/basic_usage.html&#34;&gt;Orator&lt;/a&gt;&lt;/th&gt;
-&lt;th&gt;&lt;a href=&#34;http://docs.peewee-orm.com/en/latest/index.html&#34;&gt;Peewee&lt;/a&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;orm&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;query builder&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;schema builder&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;raw sql&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;transaction&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;读写分离&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;connection pool&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;multi connection&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;extensions&lt;/td&gt;
-&lt;td&gt;simple Validators(event listener)&amp;hellip;&lt;/td&gt;
-&lt;td&gt;Cache, to json&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;demo:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;demo&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/guozhaoxia007/python-orm&#34;&gt;https://github.com/guozhaoxia007/python-orm&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;其他产品:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;其他产品&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.djangoproject.com/ja/1.9/topics/db/&#34;&gt;Django ORM&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://ponyorm.com/&#34;&gt;PonyORM&lt;/a&gt; (not free)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sqlobject.org/&#34;&gt;SQLObject&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;links:b4b76a3e3f69a7c809c70771b842bd71&#34;&gt;links&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.fullstackpython.com/object-relational-mappers-orms.html&#34;&gt;https://www.fullstackpython.com/object-relational-mappers-orms.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/sloria/PythonORMSleepy&#34;&gt;https://github.com/sloria/PythonORMSleepy&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>list     SQLALchemy Orator Peewee     orm Y Y Y   sql builder Y Y Y   schema builder Y Y Y   raw sql Y Y Y   transaction Y Y Y   读写分离 Y Y Y   connection pool Y multi connection Y   extensions simple Validators(event listener)&amp;hellip; Cache, to json model to dict    demos https://github.</description>
+    </item>
+    
+    <item>
+      <title>成都一年</title>
+      <link>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</link>
+      <pubDate>Thu, 03 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</guid>
+      <description>梦里不知身是客</description>
     </item>
     
     <item>
@@ -114,73 +75,16 @@
       <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/mysql_merge/</guid>
-      <description>
-
-&lt;h4 id=&#34;需求:5175bc9dd82baf308939b633d56bbf86&#34;&gt;需求&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;提高插入查询速度&lt;/li&gt;
-&lt;li&gt;便于归档&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;数据容量估算:5175bc9dd82baf308939b633d56bbf86&#34;&gt;数据容量估算&lt;/h4&gt;
-
-&lt;p&gt;5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G&lt;/strong&gt;
-&lt;strong&gt;即一月产生：4亿条记录，30G存储&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。&lt;/p&gt;
-
-&lt;h4 id=&#34;产品调研:5175bc9dd82baf308939b633d56bbf86&#34;&gt;产品调研&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;oneproxy&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;对应用透明&lt;/li&gt;
-&lt;li&gt;支持二级分表(tid, timestamp)&lt;/li&gt;
-&lt;li&gt;多种分表方法(hash, range)&lt;/li&gt;
-&lt;li&gt;使用简单方便&lt;/li&gt;
-&lt;li&gt;性能测试，大大提高查询速度，插入速度也不会大的影响&lt;/li&gt;
-&lt;li&gt;由于使用时间分表，极大方便归档&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;需手动创建子表&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;mysql merge&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;优点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;对应用透明&lt;/li&gt;
-&lt;li&gt;无需引入第三方软件&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;子表需为MyISAM引擎&lt;/li&gt;
-&lt;li&gt;无法使用表字段分表（即无法使用时间分表，只能人工分表）&lt;/li&gt;
-&lt;li&gt;需手动创建子表&lt;/li&gt;
-&lt;li&gt;一级分表&lt;/li&gt;
-&lt;li&gt;MERGE storage engine.  User-defined partitioning and the MERGE storage engine are not compatible.
-Tables using the MERGE storage engine cannot be partitioned. Partitioned tables cannot be merged.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;结论:5175bc9dd82baf308939b633d56bbf86&#34;&gt;结论&lt;/h4&gt;
-</description>
+      <description>需求  提高插入查询速度 便于归档  数据容量估算 5k终端，单个终端1分钟4个点，假设1天运行12小时，5000终端1天将产生：4 * 60 * 12 * 5000 = 14400000条记录，一条记录82bytes
+即一天产生：14400000 * 82 = 1180800000bytes = 1126.1 M = 1.1 G 即一月产生：4亿条记录，30G存储
+根据容量估算，除去查询效率不考虑外，单是存储问题就很严重，1w终端单月产生8亿60G，10w终端单月产生80亿600G。
+产品调研  oneproxy
+ 优点：
+ 对应用透明 支持二级分表(tid, timestamp) 多种分表方法(hash, range) 使用简单方便 性能测试，大大提高查询速度，插入速度也不会大的影响 由于使用时间分表，极大方便归档   缺点：
+ 需手动创建子表   mysql merge
+ 优点：
+ 对应用透明 无需引入第三方软件   缺点：
+ 子表需为MyISAM引擎 无法使用表字段分表（即无法使用时间分表，只能人工分表） 需手动创建子表 一级分表 MERGE storage engine. User-defined partitioning and the MERGE storage engine are not compatible.</description>
     </item>
     
     <item>
@@ -189,172 +93,23 @@ Tables using the MERGE storage engine cannot be partitioned. Partitioned tables 
       <pubDate>Mon, 22 Feb 2016 19:21:24 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/hugo/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;启动本地server&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;hugo server -t hugo-base16-theme&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;生成静态文件到public, baseUrl可以在.git中配置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;hugo -t hugo-base16-theme &amp;ndash;baseUrl=&amp;ldquo;&lt;a href=&#34;http://guozhaoxia007.github.io&amp;quot;&#34;&gt;http://guozhaoxia007.github.io&amp;quot;&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>启动本地server  hugo server -t hugo-base16-theme
+ 生成静态文件到public, baseUrl可以在.git中配置  hugo -t hugo-base16-theme &amp;ndash;baseUrl=&amp;ldquo;http://guozhaoxia007.github.io&amp;quot;</description>
     </item>
     
     <item>
       <title>python IDE</title>
-      <link>http://guozhaoxia007.github.io/post/2016/02/python-IDE/</link>
+      <link>http://guozhaoxia007.github.io/post/2016/02/python-ide/</link>
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/post/2016/02/python-IDE/</guid>
-      <description>
-
-&lt;h2 id=&#34;vim:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;VIM&lt;/h2&gt;
-
-&lt;h4 id=&#34;1-参考链接:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;1. 参考链接：&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/yangyangwithgnu/use_vim_as_ide&#34;&gt;https://github.com/yangyangwithgnu/use_vim_as_ide&lt;/a&gt;
-&lt;a href=&#34;https://github.com/spf13/spf13-vim&#34;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;2-install:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;2. install&lt;/h4&gt;
-
-&lt;p&gt;sudo pip install pyflakes&lt;/p&gt;
-
-&lt;p&gt;sudo pip install pylint&lt;/p&gt;
-
-&lt;p&gt;sudo pip install pep8&lt;/p&gt;
-
-&lt;p&gt;或者使用这个vim插件&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/scrooloose/syntastic&#34;&gt;https://github.com/scrooloose/syntastic&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;3-我的vimrc:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;3. 我的vimrc&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;call pathogen#infect()
-
-syntax enable
-syntax on
-set background=dark
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set laststatus=2
-set ruler
-&amp;quot; set cursorcolumn &amp;quot; 突出显示当前列
-set cursorline &amp;quot; 突出显示当前行
-set hlsearch
-set incsearch
-set ignorecase
-set autoindent
-set nowrap
-set showcmd       &amp;quot; 显示输入命令
-let g:solarized_termcolors=16
-colorscheme solarized
-set textwidth=79
-autocmd FileType text setlocal textwidth=78
-&amp;quot; 一旦一行的字符超出79个的话就把那些字符的背景设为红色
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%80v.\+/
-
-filetype on &amp;quot; 检测文件类型
-filetype indent on &amp;quot; 针对不同的文件类型采用不同的缩进格式
-filetype plugin on &amp;quot; 允许插件
-filetype plugin indent on &amp;quot; 启动自动补全
-
-set autoread &amp;quot; 文件修改之后自动载入
-set shortmess=atI &amp;quot; 启动的时候不显示那个援助索马里儿童的提示
-set scrolloff=7 &amp;quot; 在上下移动光标时，光标的上方或下方至少会保留显示的行数
-set ffs=unix,dos,mac &amp;quot; Use Unix as the standard file type
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_enable_highlighting=1
-let g:syntastic_python_checkers=[&#39;pep8&#39;] &amp;quot; pyflakes, pylint, pep8
-let g:syntastic_python_pylint_args=&#39;--disable=C0111&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pycharm:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;PyCharm&lt;/h2&gt;
-
-&lt;h4 id=&#34;参考链接:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/u013088062/article/details/50100121&#34;&gt;http://blog.csdn.net/u013088062/article/details/50100121&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;操作步骤:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Inspections页面，键入PEP8来找到所有相关选项，在对应的下拉菜单中选中warning选项；在Ignore erros中添加可忽略警告，C0111&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Auto Import中选择Python下的Show import popup&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的 File Encoding中IDE Encoding和Project Encoding都使用UTF-8&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;我的settings文件:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/guozhaoxia007/guozhaoxia-hugo-blog/tree/master/content/post/2016/02&#34;&gt;settings.jar&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;sublime-text-2:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;Sublime Text 2&lt;/h2&gt;
-
-&lt;h4 id=&#34;参考链接-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
-
-&lt;h4 id=&#34;操作步骤-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Ctrl+Shift+p打开命令面板输入install，就可以看到安装列表&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;安装以下插件：sublime linter, pylinter 或 python flake8 lint&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;我的settings文件-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;auto_indent&amp;quot;: true,
-    &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Twilight.tmTheme&amp;quot;,
-    &amp;quot;default_line_ending&amp;quot;: &amp;quot;unix&amp;quot;,
-    &amp;quot;detect_indentation&amp;quot;: true,
-    &amp;quot;font_size&amp;quot;: 15.0,
-    &amp;quot;ignored_packages&amp;quot;:
-    [
-        &amp;quot;Vintage&amp;quot;
-    ],
-    &amp;quot;indent_to_bracket&amp;quot;: false,
-    &amp;quot;smart_indent&amp;quot;: true,
-    &amp;quot;tab_size&amp;quot;: 4,
-    &amp;quot;translate_tabs_to_spaces&amp;quot;: true,
-    &amp;quot;trim_automatic_white_space&amp;quot;: true,
-    &amp;quot;use_tab_stops&amp;quot;: true
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>booklist</title>
-      <link>http://guozhaoxia007.github.io/post/2016/booklist/</link>
-      <pubDate>Sun, 21 Feb 2016 11:09:30 +0800</pubDate>
-      
-      <guid>http://guozhaoxia007.github.io/post/2016/booklist/</guid>
-      <description>
-
-&lt;h4 id=&#34;booklist:674ddf763791ba6f95af85355be367de&#34;&gt;booklist&lt;/h4&gt;
-
-&lt;h4 id=&#34;todo:674ddf763791ba6f95af85355be367de&#34;&gt;TODO&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;golang&lt;/li&gt;
-&lt;li&gt;mysql&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://guozhaoxia007.github.io/post/2016/02/python-ide/</guid>
+      <description>VIM 1. 参考链接： https://github.com/yangyangwithgnu/use_vim_as_ide https://github.com/spf13/spf13-vim
+2. install sudo pip install pyflakes
+sudo pip install pylint
+sudo pip install pep8
+或者使用这个vim插件
+https://github.com/scrooloose/syntastic
+3. 我的vimrc call pathogen#infect() syntax enable syntax on set background=dark set number set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set laststatus=2 set ruler &amp;quot; set cursorcolumn &amp;quot; 突出显示当前列 set cursorline &amp;quot; 突出显示当前行 set hlsearch set incsearch set ignorecase set autoindent set nowrap set showcmd &amp;quot; 显示输入命令 let g:solarized_termcolors=16 colorscheme solarized set textwidth=79 autocmd FileType text setlocal textwidth=78 &amp;quot; 一旦一行的字符超出79个的话就把那些字符的背景设为红色 highlight OverLength ctermbg=red ctermfg=white guibg=#592929 match OverLength /\%80v.</description>
     </item>
     
     <item>
@@ -363,177 +118,9 @@ let g:syntastic_python_pylint_args=&#39;--disable=C0111&#39;
       <pubDate>Sun, 21 Feb 2016 01:09:41 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/functional_programming/</guid>
-      <description>
-
-&lt;h1 id=&#34;函数式编程:7bd27318b7533519c78b954d5b372338&#34;&gt;函数式编程&lt;/h1&gt;
-
-&lt;h2 id=&#34;高阶函数:7bd27318b7533519c78b954d5b372338&#34;&gt;高阶函数&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def add(x, y, f):
-    return f(x) + f(y)
-    
-&amp;gt;&amp;gt;&amp;gt; add(-3, 2, abs)
-5
-&amp;gt;&amp;gt;&amp;gt; map(abs, [1, -2, -5])
-[1, 2, 5]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;常见的内置高阶函数
-map/filter/reduce/sorted&lt;/p&gt;
-
-&lt;h2 id=&#34;返回函数:7bd27318b7533519c78b954d5b372338&#34;&gt;返回函数&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def f():
-    print &#39;call f()...&#39;
-    # 定义函数g:
-    def g():
-        print &#39;call g()...&#39;
-    # 返回函数g:
-    return g
-
-&amp;gt;&amp;gt;&amp;gt; x = f()   # 调用f()
-call f()...
-&amp;gt;&amp;gt;&amp;gt; x   # 变量x是f()返回的函数：
-&amp;lt;function g at 0x1037bf320&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; x()   # x指向函数，因此可以调用
-call g()...   # 调用x()就是执行g()函数定义的代码
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;延迟计算&lt;/p&gt;
-
-&lt;h2 id=&#34;闭包:7bd27318b7533519c78b954d5b372338&#34;&gt;闭包&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def f():
-    print &#39;f()...&#39;
-    def g():
-        print &#39;g()...&#39;
-    return g
-
-# 希望一次返回3个函数，分别计算1x1,2x2,3x3:
-def count():
-    fs = []
-    for i in range(1, 4):
-        def f():
-            return i*i
-        fs.append(f)
-    return fs
-
-f1, f2, f3 = count()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;匿名函数:7bd27318b7533519c78b954d5b372338&#34;&gt;匿名函数&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;&amp;gt;&amp;gt; map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
-[1, 4, 9, 16, 25, 36, 49, 64, 81]
-
-&amp;gt;&amp;gt;&amp;gt; sorted([1, 3, 9, 5, 0], lambda x,y: -cmp(x,y))
-[9, 5, 3, 1, 0]
-
-&amp;gt;&amp;gt;&amp;gt; myabs = lambda x: -x if x &amp;lt; 0 else x 
-&amp;gt;&amp;gt;&amp;gt; myabs(-1)
-1
-&amp;gt;&amp;gt;&amp;gt; myabs(1)
-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;decorator装饰器:7bd27318b7533519c78b954d5b372338&#34;&gt;decorator装饰器&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;&amp;gt;&amp;gt; def f1(x):
-...     return x * x
-...
-&amp;gt;&amp;gt;&amp;gt; def f2(x):
-...     return x * 2
-...
-&amp;gt;&amp;gt;&amp;gt; def new_fn(f):
-...     def fn(x):
-...         print &#39;call &#39; + f.__name__ + &#39;()&#39;
-...         return f(x)
-...     return fn
-...
-&amp;gt;&amp;gt;&amp;gt; g2 = new_fn(f2)
-&amp;gt;&amp;gt;&amp;gt; g2(5)
-call f2()
-10
-&amp;gt;&amp;gt;&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; @new_fn
-... def f1(x):
-...     return x * 2
-...
-&amp;gt;&amp;gt;&amp;gt; f1(5)
-call f1()
-10
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Q1: 如果被装饰的函数函数个数不一样怎么办&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import time
-
-def performance(f):
-    def fn(*args, **kw):
-        t1 = time.time()
-        r = f(*args, **kw)
-        t2 = time.time()
-        print &#39;call %s() in %fs&#39; % (f.__name__, (t2 - t1))
-        return r
-    return fn
-
-performance
-def factorial(n):
-    return reduce(lambda x,y: x*y, range(1, n+1))
-
-print factorial(10)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;带参数的decorator, @log(&amp;ldquo;INFO&amp;rdquo;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def log(prefix):
-    def log_decorator(f):
-        def wrapper(*args, **kw):
-            print &#39;[%s] %s()...&#39; % (prefix, f.__name__)
-            return f(*args, **kw)
-        return wrapper
-    return log_decorator
-
-@log(&#39;DEBUG&#39;)
-def test():
-    pass
-print test()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import time
-
-def performance(unit):
-    def performance_decorator(f):
-        def wrapper(*args, **kw):
-            t1 = time.time()
-            r = f(*args, **kw)
-            t2 = time.time()
-            t = (t2 - t1) * 1000 if unit == &#39;ms&#39; else (t2 - t1)
-            print &#39;call %s() in %f %s&#39; % (f.__name__, t, unit)
-            return r
-        return wrapper
-    return performance_decorator
-
-@performance(&#39;ms&#39;)
-def factorial(n):
-    return reduce(lambda x,y: x*y, range(1, n+1))
-
-print factorial(10)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;完善decorator:7bd27318b7533519c78b954d5b372338&#34;&gt;完善decorator&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import functools
-def log(f):
-    @functools.wraps(f)
-    def wrapper(*args, **kw):
-        print &#39;call...&#39;
-        return f(*args, **kw)
-    return wrapper
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;偏函数:7bd27318b7533519c78b954d5b372338&#34;&gt;偏函数&lt;/h2&gt;
-</description>
+      <description>函数式编程 高阶函数 def add(x, y, f): return f(x) + f(y) &amp;gt;&amp;gt;&amp;gt; add(-3, 2, abs) 5 &amp;gt;&amp;gt;&amp;gt; map(abs, [1, -2, -5]) [1, 2, 5] 常见的内置高阶函数 map/filter/reduce/sorted
+返回函数 def f(): print &amp;#39;call f()...&amp;#39; # 定义函数g: def g(): print &amp;#39;call g()...&amp;#39; # 返回函数g: return g &amp;gt;&amp;gt;&amp;gt; x = f() # 调用f() call f()... &amp;gt;&amp;gt;&amp;gt; x # 变量x是f()返回的函数： &amp;lt;function g at 0x1037bf320&amp;gt; &amp;gt;&amp;gt;&amp;gt; x() # x指向函数，因此可以调用 call g()... # 调用x()就是执行g()函数定义的代码 延迟计算
+闭包 def f(): print &amp;#39;f().</description>
     </item>
     
     <item>
@@ -542,197 +129,7 @@ def log(f):
       <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/pytz/</guid>
-      <description>
-
-&lt;h1 id=&#34;pytz使用:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;pytz使用&lt;/h1&gt;
-
-&lt;h2 id=&#34;使用场景:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;使用场景&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间）&lt;/li&gt;
-&lt;li&gt;定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;实验1-夏令时和冬令时:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;实验1，夏令时和冬令时&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;# 美东、中国标准、印度标准、印尼西部
-[&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;]
-fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39;
-
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0))
-    print loc_dt.strftime(fmt)
-
-2015-04-01 08:00:00 EDT-0400
-2015-04-01 08:00:00 CST+0800
-2015-04-01 08:00:00 IST+0530
-2015-04-01 08:00:00 WIB+0700
-
-
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0))
-    print loc_dt.strftime(fmt)
-
-2015-12-01 08:00:00 EST-0500
-2015-12-01 08:00:00 CST+0800
-2015-12-01 08:00:00 IST+0530
-2015-12-01 08:00:00 WIB+0700
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;实验2:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;实验2&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;In [146]: now = int(time.time())
-
-In [147]: now
-Out[147]: 1451015286
-
-In [148]: utc_dt = utc.localize(datetime.utcfromtimestamp(now))
-
-In [149]: utc_dt.strftime(fmt)
-Out[149]: &#39;2015-12-25 03:48:06 UTC+0000&#39;
-
-In [151]: for tz in timezones:
-    p_tz = timezone(tz)
-    p_dt = p_tz.normalize(utc_dt.astimezone(p_tz))
-    print p_dt.strftime(fmt)
-   .....:
-2015-12-24 22:48:06 EST-0500
-2015-12-25 11:48:06 CST+0800
-2015-12-25 09:18:06 IST+0530
-2015-12-25 10:48:06 WIB+0700
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mktime:（使用美东时区的datetime）
-在东8区执行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int(time.mktime(time.strptime(&#39;2015-12-24 22:48:06&#39;, &#39;%Y-%m-%d %H:%M:%S&#39;))
-
-1450968486
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在美东时区执行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int(time.mktime(time.strptime(&#39;2015-12-24 22:48:06&#39;, &#39;%Y-%m-%d %H:%M:%S&#39;))
-1451015286
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;timestamp-datetime:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;timestamp -&amp;gt; datetime&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;def timestamp2datetime(timestamp, tzinfo, fmt=&amp;quot;%Y-%m-%d %H:%M:%S %Z%z&amp;quot;):
-    utc = pytz.utc
-    utc_dt = utc.localize(datetime.utcfromtimestamp(timestamp))
-    tz = timezone(tzinfo)
-    dt = tz.normalize(utc_dt.astimezone(tz))
-    return dt, dt.strftime(fmt)
-    
-In [178]: timestamp2datetime(1451015286, &#39;Asia/Shanghai&#39;)
-Out[178]: &#39;2015-12-25 11:48:06 CST+0800&#39;
-
-In [179]: timestamp2datetime(1451015286, &#39;US/Eastern&#39;)
-Out[179]: &#39;2015-12-24 22:48:06 EST-0500&#39;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;美国2015.3.8 02:00（当地时间）进入夏令时：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [181]: timestamp2datetime(1425794400, &#39;US/Eastern&#39;)
-Out[181]: &#39;2015-03-08 01:00:00 EST-0500&#39;
-In [204]: timestamp2datetime(1425794400, &#39;Asia/Shanghai&#39;)
-Out[204]: &#39;2015-03-08 14:00:00 CST+0800&#39;
-
-In [184]: timestamp2datetime(1425797999, &#39;US/Eastern&#39;)
-Out[184]: &#39;2015-03-08 01:59:59 EST-0500&#39;
-In [207]: timestamp2datetime(1425797999, &#39;Asia/Shanghai&#39;)
-Out[207]: &#39;2015-03-08 14:59:59 CST+0800&#39;
-
-In [180]: timestamp2datetime(1425798000, &#39;US/Eastern&#39;)
-Out[180]: &#39;2015-03-08 03:00:00 EDT-0400&#39;  # 注：2点变3点
-In [208]: timestamp2datetime(1425798000, &#39;Asia/Shanghai&#39;)
-Out[208]: &#39;2015-03-08 15:00:00 CST+0800&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;美国2015.11.1 02:00（当地时间）进入夏令时：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [202]: timestamp2datetime(1446357599, &#39;US/Eastern&#39;)
-Out[202]: &#39;2015-11-01 01:59:59 EDT-0400&#39;
-In [209]: timestamp2datetime(1446357599, &#39;Asia/Shanghai&#39;)
-Out[209]: &#39;2015-11-01 13:59:59 CST+0800&#39;
-
-In [203]: timestamp2datetime(1446357600, &#39;US/Eastern&#39;)
-Out[203]: &#39;2015-11-01 01:00:00 EST-0500&#39; //注：2点变1点
-In [210]: timestamp2datetime(1446357600, &#39;Asia/Shanghai&#39;)
-Out[210]: &#39;2015-11-01 14:00:00 CST+0800&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;datetime-timestamp:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;datetime -&amp;gt; timestamp&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;def datetime2timestamp(dt):
-    utc_tz = timezone(&amp;quot;UTC&amp;quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-    return calendar.timegm(utc_dt.timetuple())
-
-
-def datetime_to_unixtime(year, month, day, hour=0, minute=0, second=0, tzinfo=&amp;quot;Asia/Shanghai&amp;quot;):
-    &amp;quot;&amp;quot;&amp;quot;
-    &amp;gt;&amp;gt;&amp;gt; datetime_to_unixtime(2015, 11, 1, hour=1, tzinfo=&#39;US/Eastern&#39;)
-    1446357600
-    &amp;quot;&amp;quot;&amp;quot;
-    tz = timezone(tzinfo)
-    dt = datetime(year, month, day, hour, minute, second)
-    dt = tz.localize(dt)
-    utc_tz = timezone(&amp;quot;UTC&amp;quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-
-    return calendar.timegm(utc_dt.timetuple())
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;总结:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;datetime + tzinfo是关键
-epochtime转datetime，datetime带tzinfo才知道转给哪个时区的人看
-datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Sphinx</title>
-      <link>http://guozhaoxia007.github.io/post/2016/03/sphinx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://guozhaoxia007.github.io/post/2016/03/sphinx/</guid>
-      <description>
-
-&lt;h4 id=&#34;sphinx:75fad5abad9734f803f0fb7f6df7e6a9&#34;&gt;Sphinx&lt;/h4&gt;
-
-&lt;h4 id=&#34;read-the-docs:75fad5abad9734f803f0fb7f6df7e6a9&#34;&gt;Read the docs&lt;/h4&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>成都一年</title>
-      <link>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://guozhaoxia007.github.io/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/</guid>
-      <description>&lt;p&gt;时间过得真快，转眼就到成都一年了，想想来成都之前的想象及计划，不尽理想，有些事情也被某人一语成谶。
-2015.3.22下午和静静一起到达成都，印象深刻的是从北京到成都，换了一个环境，反差还是有一点大，成都老城区并不像现在繁华大都市一样，高楼林立，（车水马龙到是真的，太堵了），
-市区内稍显老旧，当时天气已经开始热起来了，但是从北方来的我们依然穿的很厚，而行李还未到达。打车到了已经租好的房子那里，是个老小区，树木荫荫，仿佛心情一样不是那么明朗。
-说不清是对北京的依恋还是对未来的茫然，有点不知所措。
-一周之后，山哥，磊哥，洋哥来了，小小的两居室显得热闹起来了
-再半月之后，他们都回去了，就剩我一个人，突然冷清下来，觉得还是有点伤心。
-虽然新同事也都挺好，但是感觉始终无法融入，也许是年龄大了的关系，不再像几年前一样每天热情满满去工作，去玩，去交新朋友。&lt;/p&gt;
-
-&lt;p&gt;来成都之后，所有项目都要短期内交接完成，从以前的只会听命的程序媛到事事都要负责的项目经理，压力很大，每天依然很忙。经常忙到诺大的办公室只剩我一人。
-还有一点觉得很不习惯的是，这里的程序员竟然不习惯加班，一下班大家都走了，在北京那会，下班之后不管有事没事，办公室总是有人，会加班到很晚。也许这也是成都
-和北京氛围不一样的原因。&lt;/p&gt;
-
-&lt;p&gt;关于我为什么要来成都，原因种种，在北京4年半，事情种种，不愿提及，希望能换个环境，也许会有不同的经历。
-我一直是一个很独立的人，作为女生这样的性格也许并不太好，我愿意接受新朋友，但是也会介意朋友试图更深次的接近我，也就是防卫心理太重。&lt;/p&gt;
-
-&lt;p&gt;梦里不知身是客&lt;/p&gt;
-</description>
+      <description>pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST+0800 2015-04-01 08:00:00 IST+0530 2015-04-01 08:00:00 WIB+0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST+0800 2015-12-01 08:00:00 IST+0530 2015-12-01 08:00:00 WIB+0700  实验2 In [146]: now = int(time.</description>
     </item>
     
   </channel>

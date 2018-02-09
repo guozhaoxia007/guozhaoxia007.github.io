@@ -1,147 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ide on 喵大人</title>
+    <title>Ide on 喵大人的博客</title>
     <link>http://guozhaoxia007.github.io/categories/ide/</link>
-    <description>Recent content in Ide on 喵大人</description>
+    <description>Recent content in Ide on 喵大人的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Mon, 22 Feb 2016 15:48:44 +0800</lastBuildDate>
-    <atom:link href="http://guozhaoxia007.github.io/categories/ide/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://guozhaoxia007.github.io/categories/ide/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>python IDE</title>
-      <link>http://guozhaoxia007.github.io/post/2016/02/python-IDE/</link>
+      <link>http://guozhaoxia007.github.io/post/2016/02/python-ide/</link>
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/post/2016/02/python-IDE/</guid>
-      <description>
-
-&lt;h2 id=&#34;vim:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;VIM&lt;/h2&gt;
-
-&lt;h4 id=&#34;1-参考链接:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;1. 参考链接：&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/yangyangwithgnu/use_vim_as_ide&#34;&gt;https://github.com/yangyangwithgnu/use_vim_as_ide&lt;/a&gt;
-&lt;a href=&#34;https://github.com/spf13/spf13-vim&#34;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;2-install:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;2. install&lt;/h4&gt;
-
-&lt;p&gt;sudo pip install pyflakes&lt;/p&gt;
-
-&lt;p&gt;sudo pip install pylint&lt;/p&gt;
-
-&lt;p&gt;sudo pip install pep8&lt;/p&gt;
-
-&lt;p&gt;或者使用这个vim插件&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/scrooloose/syntastic&#34;&gt;https://github.com/scrooloose/syntastic&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;3-我的vimrc:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;3. 我的vimrc&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;call pathogen#infect()
-
-syntax enable
-syntax on
-set background=dark
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set laststatus=2
-set ruler
-&amp;quot; set cursorcolumn &amp;quot; 突出显示当前列
-set cursorline &amp;quot; 突出显示当前行
-set hlsearch
-set incsearch
-set ignorecase
-set autoindent
-set nowrap
-set showcmd       &amp;quot; 显示输入命令
-let g:solarized_termcolors=16
-colorscheme solarized
-set textwidth=79
-autocmd FileType text setlocal textwidth=78
-&amp;quot; 一旦一行的字符超出79个的话就把那些字符的背景设为红色
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%80v.\+/
-
-filetype on &amp;quot; 检测文件类型
-filetype indent on &amp;quot; 针对不同的文件类型采用不同的缩进格式
-filetype plugin on &amp;quot; 允许插件
-filetype plugin indent on &amp;quot; 启动自动补全
-
-set autoread &amp;quot; 文件修改之后自动载入
-set shortmess=atI &amp;quot; 启动的时候不显示那个援助索马里儿童的提示
-set scrolloff=7 &amp;quot; 在上下移动光标时，光标的上方或下方至少会保留显示的行数
-set ffs=unix,dos,mac &amp;quot; Use Unix as the standard file type
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_enable_highlighting=1
-let g:syntastic_python_checkers=[&#39;pep8&#39;] &amp;quot; pyflakes, pylint, pep8
-let g:syntastic_python_pylint_args=&#39;--disable=C0111&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pycharm:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;PyCharm&lt;/h2&gt;
-
-&lt;h4 id=&#34;参考链接:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/u013088062/article/details/50100121&#34;&gt;http://blog.csdn.net/u013088062/article/details/50100121&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;操作步骤:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Inspections页面，键入PEP8来找到所有相关选项，在对应的下拉菜单中选中warning选项；在Ignore erros中添加可忽略警告，C0111&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的Auto Import中选择Python下的Show import popup&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在Settings/Preferences对话框中的 File Encoding中IDE Encoding和Project Encoding都使用UTF-8&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;我的settings文件:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/guozhaoxia007/guozhaoxia-hugo-blog/tree/master/content/post/2016/02&#34;&gt;settings.jar&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;sublime-text-2:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;Sublime Text 2&lt;/h2&gt;
-
-&lt;h4 id=&#34;参考链接-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;参考链接&lt;/h4&gt;
-
-&lt;h4 id=&#34;操作步骤-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;操作步骤&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Ctrl+Shift+p打开命令面板输入install，就可以看到安装列表&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;安装以下插件：sublime linter, pylinter 或 python flake8 lint&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;我的settings文件-1:58cf1fc3279828b22be4c0dc57e169e6&#34;&gt;我的Settings文件&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;auto_indent&amp;quot;: true,
-    &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Twilight.tmTheme&amp;quot;,
-    &amp;quot;default_line_ending&amp;quot;: &amp;quot;unix&amp;quot;,
-    &amp;quot;detect_indentation&amp;quot;: true,
-    &amp;quot;font_size&amp;quot;: 15.0,
-    &amp;quot;ignored_packages&amp;quot;:
-    [
-        &amp;quot;Vintage&amp;quot;
-    ],
-    &amp;quot;indent_to_bracket&amp;quot;: false,
-    &amp;quot;smart_indent&amp;quot;: true,
-    &amp;quot;tab_size&amp;quot;: 4,
-    &amp;quot;translate_tabs_to_spaces&amp;quot;: true,
-    &amp;quot;trim_automatic_white_space&amp;quot;: true,
-    &amp;quot;use_tab_stops&amp;quot;: true
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://guozhaoxia007.github.io/post/2016/02/python-ide/</guid>
+      <description>VIM 1. 参考链接： https://github.com/yangyangwithgnu/use_vim_as_ide https://github.com/spf13/spf13-vim
+2. install sudo pip install pyflakes
+sudo pip install pylint
+sudo pip install pep8
+或者使用这个vim插件
+https://github.com/scrooloose/syntastic
+3. 我的vimrc call pathogen#infect() syntax enable syntax on set background=dark set number set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set laststatus=2 set ruler &amp;quot; set cursorcolumn &amp;quot; 突出显示当前列 set cursorline &amp;quot; 突出显示当前行 set hlsearch set incsearch set ignorecase set autoindent set nowrap set showcmd &amp;quot; 显示输入命令 let g:solarized_termcolors=16 colorscheme solarized set textwidth=79 autocmd FileType text setlocal textwidth=78 &amp;quot; 一旦一行的字符超出79个的话就把那些字符的背景设为红色 highlight OverLength ctermbg=red ctermfg=white guibg=#592929 match OverLength /\%80v.</description>
     </item>
     
   </channel>

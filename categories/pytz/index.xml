@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pytz on 喵大人</title>
+    <title>Pytz on 喵大人的博客</title>
     <link>http://guozhaoxia007.github.io/categories/pytz/</link>
-    <description>Recent content in Pytz on 喵大人</description>
+    <description>Recent content in Pytz on 喵大人的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sat, 20 Feb 2016 23:18:34 +0800</lastBuildDate>
-    <atom:link href="http://guozhaoxia007.github.io/categories/pytz/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://guozhaoxia007.github.io/categories/pytz/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>pytz</title>
@@ -15,158 +17,7 @@
       <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/pytz/</guid>
-      <description>
-
-&lt;h1 id=&#34;pytz使用:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;pytz使用&lt;/h1&gt;
-
-&lt;h2 id=&#34;使用场景:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;使用场景&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间）&lt;/li&gt;
-&lt;li&gt;定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;实验1-夏令时和冬令时:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;实验1，夏令时和冬令时&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;# 美东、中国标准、印度标准、印尼西部
-[&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;]
-fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39;
-
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0))
-    print loc_dt.strftime(fmt)
-
-2015-04-01 08:00:00 EDT-0400
-2015-04-01 08:00:00 CST+0800
-2015-04-01 08:00:00 IST+0530
-2015-04-01 08:00:00 WIB+0700
-
-
-for tz in timezones:
-    p_tz = timezone(tz)
-    loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0))
-    print loc_dt.strftime(fmt)
-
-2015-12-01 08:00:00 EST-0500
-2015-12-01 08:00:00 CST+0800
-2015-12-01 08:00:00 IST+0530
-2015-12-01 08:00:00 WIB+0700
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;实验2:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;实验2&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;In [146]: now = int(time.time())
-
-In [147]: now
-Out[147]: 1451015286
-
-In [148]: utc_dt = utc.localize(datetime.utcfromtimestamp(now))
-
-In [149]: utc_dt.strftime(fmt)
-Out[149]: &#39;2015-12-25 03:48:06 UTC+0000&#39;
-
-In [151]: for tz in timezones:
-    p_tz = timezone(tz)
-    p_dt = p_tz.normalize(utc_dt.astimezone(p_tz))
-    print p_dt.strftime(fmt)
-   .....:
-2015-12-24 22:48:06 EST-0500
-2015-12-25 11:48:06 CST+0800
-2015-12-25 09:18:06 IST+0530
-2015-12-25 10:48:06 WIB+0700
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mktime:（使用美东时区的datetime）
-在东8区执行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int(time.mktime(time.strptime(&#39;2015-12-24 22:48:06&#39;, &#39;%Y-%m-%d %H:%M:%S&#39;))
-
-1450968486
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在美东时区执行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int(time.mktime(time.strptime(&#39;2015-12-24 22:48:06&#39;, &#39;%Y-%m-%d %H:%M:%S&#39;))
-1451015286
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;timestamp-datetime:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;timestamp -&amp;gt; datetime&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;def timestamp2datetime(timestamp, tzinfo, fmt=&amp;quot;%Y-%m-%d %H:%M:%S %Z%z&amp;quot;):
-    utc = pytz.utc
-    utc_dt = utc.localize(datetime.utcfromtimestamp(timestamp))
-    tz = timezone(tzinfo)
-    dt = tz.normalize(utc_dt.astimezone(tz))
-    return dt, dt.strftime(fmt)
-    
-In [178]: timestamp2datetime(1451015286, &#39;Asia/Shanghai&#39;)
-Out[178]: &#39;2015-12-25 11:48:06 CST+0800&#39;
-
-In [179]: timestamp2datetime(1451015286, &#39;US/Eastern&#39;)
-Out[179]: &#39;2015-12-24 22:48:06 EST-0500&#39;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;美国2015.3.8 02:00（当地时间）进入夏令时：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [181]: timestamp2datetime(1425794400, &#39;US/Eastern&#39;)
-Out[181]: &#39;2015-03-08 01:00:00 EST-0500&#39;
-In [204]: timestamp2datetime(1425794400, &#39;Asia/Shanghai&#39;)
-Out[204]: &#39;2015-03-08 14:00:00 CST+0800&#39;
-
-In [184]: timestamp2datetime(1425797999, &#39;US/Eastern&#39;)
-Out[184]: &#39;2015-03-08 01:59:59 EST-0500&#39;
-In [207]: timestamp2datetime(1425797999, &#39;Asia/Shanghai&#39;)
-Out[207]: &#39;2015-03-08 14:59:59 CST+0800&#39;
-
-In [180]: timestamp2datetime(1425798000, &#39;US/Eastern&#39;)
-Out[180]: &#39;2015-03-08 03:00:00 EDT-0400&#39;  # 注：2点变3点
-In [208]: timestamp2datetime(1425798000, &#39;Asia/Shanghai&#39;)
-Out[208]: &#39;2015-03-08 15:00:00 CST+0800&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;美国2015.11.1 02:00（当地时间）进入夏令时：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;In [202]: timestamp2datetime(1446357599, &#39;US/Eastern&#39;)
-Out[202]: &#39;2015-11-01 01:59:59 EDT-0400&#39;
-In [209]: timestamp2datetime(1446357599, &#39;Asia/Shanghai&#39;)
-Out[209]: &#39;2015-11-01 13:59:59 CST+0800&#39;
-
-In [203]: timestamp2datetime(1446357600, &#39;US/Eastern&#39;)
-Out[203]: &#39;2015-11-01 01:00:00 EST-0500&#39; //注：2点变1点
-In [210]: timestamp2datetime(1446357600, &#39;Asia/Shanghai&#39;)
-Out[210]: &#39;2015-11-01 14:00:00 CST+0800&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;datetime-timestamp:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;datetime -&amp;gt; timestamp&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;def datetime2timestamp(dt):
-    utc_tz = timezone(&amp;quot;UTC&amp;quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-    return calendar.timegm(utc_dt.timetuple())
-
-
-def datetime_to_unixtime(year, month, day, hour=0, minute=0, second=0, tzinfo=&amp;quot;Asia/Shanghai&amp;quot;):
-    &amp;quot;&amp;quot;&amp;quot;
-    &amp;gt;&amp;gt;&amp;gt; datetime_to_unixtime(2015, 11, 1, hour=1, tzinfo=&#39;US/Eastern&#39;)
-    1446357600
-    &amp;quot;&amp;quot;&amp;quot;
-    tz = timezone(tzinfo)
-    dt = datetime(year, month, day, hour, minute, second)
-    dt = tz.localize(dt)
-    utc_tz = timezone(&amp;quot;UTC&amp;quot;)
-    utc_dt = utc_tz.normalize(dt.astimezone(utc_tz))
-
-    return calendar.timegm(utc_dt.timetuple())
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;总结:6069e169cf3a7a01ed20689a63d50ef4&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;datetime + tzinfo是关键
-epochtime转datetime，datetime带tzinfo才知道转给哪个时区的人看
-datetime转epochtime，datetime带tzinfo才知道用哪个时区转成UTC时间&lt;/p&gt;
-</description>
+      <description>pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d %H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST+0800 2015-04-01 08:00:00 IST+0530 2015-04-01 08:00:00 WIB+0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST+0800 2015-12-01 08:00:00 IST+0530 2015-12-01 08:00:00 WIB+0700  实验2 In [146]: now = int(time.</description>
     </item>
     
   </channel>
