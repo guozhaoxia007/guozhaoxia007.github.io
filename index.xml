@@ -35,15 +35,6 @@
     </item>
     
     <item>
-      <title>test</title>
-      <link>http://guozhaoxia007.github.io/test/</link>
-      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://guozhaoxia007.github.io/test/</guid>
-      <description>It&amp;rsquo;s me &amp;hellip; Miao &amp;hellip;</description>
-    </item>
-    
-    <item>
       <title>postgis</title>
       <link>http://guozhaoxia007.github.io/post/2018/02/postgis/</link>
       <pubDate>Wed, 07 Feb 2018 15:07:13 +0800</pubDate>
@@ -111,8 +102,9 @@ MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,
       <pubDate>Mon, 22 Feb 2016 19:21:24 +0800</pubDate>
       
       <guid>http://guozhaoxia007.github.io/post/2016/02/hugo/</guid>
-      <description>启动本地server  hugo server -t hugo-base16-theme
- 生成静态文件到public, baseUrl可以在.git中配置  hugo -t hugo-base16-theme &amp;ndash;baseUrl=&amp;ldquo;http://guozhaoxia007.github.io&amp;quot;</description>
+      <description>添加文件  hugo new post/2016/02/new.md
+ 启动本地server  hugo server -w
+ 生成静态文件到public, baseUrl可以在.git中配置  hugo -t hugo-nuo</description>
     </item>
     
     <item>
