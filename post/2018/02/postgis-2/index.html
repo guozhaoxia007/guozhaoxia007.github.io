@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 
   <meta charset="utf-8" />
@@ -24,15 +24,15 @@
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="postgis-2" />
     <meta name="twitter:description" content="0. 创建空间字段准备 CREATE EXTENSION postgis;  -- Geometry -- Method 1 SELECT AddGeometryColumn (&#39;scheme&#39;，&#39;cities&#39;, &#39;the_geom&#39;, 4326, &#39;POINT&#39;, 2); AddGeometryColumn( &amp;lt;schema_name&amp;gt;, &amp;lt;table_name&amp;gt;, &amp;lt;column_name&amp;gt;, &amp;lt;srid&amp;gt;, &amp;lt;type&amp;gt;, &amp;lt;dimension&amp;gt; ) -- Method 2 CREATE TABLE ROADS ( ID int4, ROAD_NAME varchar(25), geom geometry(LINESTRING,4326) ); CREATE TABLE global_points ( id SERIAL PRIMARY KEY, name VARCHAR(64), location GEOGRAPHY(POINT,4326) ); -- Method 3 ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);  -- geography CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINT,4326) ); CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINTZ,4326) );  1." />
-    <meta name="twitter:image" content="http://guozhaoxia007.github.io/img/avatar.jpg" />
+    <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="postgis-2" />
   <meta property="og:description" content="0. 创建空间字段准备 CREATE EXTENSION postgis;  -- Geometry -- Method 1 SELECT AddGeometryColumn (&#39;scheme&#39;，&#39;cities&#39;, &#39;the_geom&#39;, 4326, &#39;POINT&#39;, 2); AddGeometryColumn( &amp;lt;schema_name&amp;gt;, &amp;lt;table_name&amp;gt;, &amp;lt;column_name&amp;gt;, &amp;lt;srid&amp;gt;, &amp;lt;type&amp;gt;, &amp;lt;dimension&amp;gt; ) -- Method 2 CREATE TABLE ROADS ( ID int4, ROAD_NAME varchar(25), geom geometry(LINESTRING,4326) ); CREATE TABLE global_points ( id SERIAL PRIMARY KEY, name VARCHAR(64), location GEOGRAPHY(POINT,4326) ); -- Method 3 ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);  -- geography CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINT,4326) ); CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINTZ,4326) );  1." />
-  <meta property="og:url" content="http://guozhaoxia007.github.io/post/2018/02/postgis-2/" />
-  <meta property="og:image" content="http://guozhaoxia007.github.io/img/avatar.jpg" />
+  <meta property="og:url" content="http://www.gmiao.top/post/2018/02/postgis-2/" />
+  <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
 
 
 
@@ -40,8 +40,8 @@
 <meta name="generator" content="Hugo 0.36" />
 
 
-<link rel="canonical" href="http://guozhaoxia007.github.io/post/2018/02/postgis-2/" />
-<link rel="alternative" href="http://guozhaoxia007.github.io/index.xml" title="喵大人的博客" type="application/atom+xml" />
+<link rel="canonical" href="http://www.gmiao.top/post/2018/02/postgis-2/" />
+<link rel="alternative" href="http://www.gmiao.top/index.xml" title="喵大人的博客" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -66,18 +66,18 @@
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="http://guozhaoxia007.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="http://guozhaoxia007.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="http://guozhaoxia007.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="http://guozhaoxia007.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="http://guozhaoxia007.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="http://guozhaoxia007.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="http://www.gmiao.top/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://www.gmiao.top/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://www.gmiao.top/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://www.gmiao.top/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://www.gmiao.top/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://www.gmiao.top/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
 
-<link rel="stylesheet" href="http://guozhaoxia007.github.io/css/bundle.css" />
+<link rel="stylesheet" href="http://www.gmiao.top/css/bundle.css" />
 
 
   
@@ -112,7 +112,7 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="img/avatar.jpeg" alt="Avatar">
+  <img class="avatar" src="http://www.gmiao.top/img/avatar.jpeg" alt="Avatar">
   
   <h2 class="title">喵大人的博客</h2>
   
@@ -131,7 +131,7 @@
             
             
             ">
-            <a href="http://guozhaoxia007.github.io/">首页</a>
+            <a href="http://www.gmiao.top/">首页</a>
           </li>
       
         <li class="menu-item
@@ -145,14 +145,14 @@
             
             
             ">
-            <a href="http://guozhaoxia007.github.io/tags/">标签</a>
+            <a href="http://www.gmiao.top/tags/">标签</a>
           </li>
       
         <li class="menu-item
             
             
             ">
-            <a href="http://guozhaoxia007.github.io/about/">关于</a>
+            <a href="http://www.gmiao.top/about/">关于</a>
           </li>
       
     </ul>
@@ -218,7 +218,7 @@
       
 
       <li class="social-item">
-        <a href="http://guozhaoxia007.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="http://www.gmiao.top/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -384,7 +384,7 @@ geometry = ST_GeometryFromText(text WKT, SRID);
   });
 </script>
 
-<script src="http://guozhaoxia007.github.io/js/bundle.js"></script>
+<script src="http://www.gmiao.top/js/bundle.js"></script>
 
 
 

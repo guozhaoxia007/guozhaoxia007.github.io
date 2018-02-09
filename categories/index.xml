@@ -2,83 +2,83 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 喵大人的博客</title>
-    <link>http://guozhaoxia007.github.io/categories/</link>
+    <link>http://www.gmiao.top/categories/</link>
     <description>Recent content in Categories on 喵大人的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-Hans</language>
     
-	<atom:link href="http://guozhaoxia007.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.gmiao.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo</title>
-      <link>http://guozhaoxia007.github.io/categories/hugo/</link>
+      <link>http://www.gmiao.top/categories/hugo/</link>
       <pubDate>Mon, 22 Feb 2016 19:21:24 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/hugo/</guid>
+      <guid>http://www.gmiao.top/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ide</title>
-      <link>http://guozhaoxia007.github.io/categories/ide/</link>
+      <link>http://www.gmiao.top/categories/ide/</link>
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/ide/</guid>
+      <guid>http://www.gmiao.top/categories/ide/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Merge</title>
-      <link>http://guozhaoxia007.github.io/categories/merge/</link>
+      <link>http://www.gmiao.top/categories/merge/</link>
       <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/merge/</guid>
+      <guid>http://www.gmiao.top/categories/merge/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>http://guozhaoxia007.github.io/categories/mysql/</link>
+      <link>http://www.gmiao.top/categories/mysql/</link>
       <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/mysql/</guid>
+      <guid>http://www.gmiao.top/categories/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Oneproxy</title>
-      <link>http://guozhaoxia007.github.io/categories/oneproxy/</link>
+      <link>http://www.gmiao.top/categories/oneproxy/</link>
       <pubDate>Wed, 24 Feb 2016 11:08:29 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/oneproxy/</guid>
+      <guid>http://www.gmiao.top/categories/oneproxy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://guozhaoxia007.github.io/categories/python/</link>
+      <link>http://www.gmiao.top/categories/python/</link>
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/python/</guid>
+      <guid>http://www.gmiao.top/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pytz</title>
-      <link>http://guozhaoxia007.github.io/categories/pytz/</link>
+      <link>http://www.gmiao.top/categories/pytz/</link>
       <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/pytz/</guid>
+      <guid>http://www.gmiao.top/categories/pytz/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Timezone</title>
-      <link>http://guozhaoxia007.github.io/categories/timezone/</link>
+      <link>http://www.gmiao.top/categories/timezone/</link>
       <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
       
-      <guid>http://guozhaoxia007.github.io/categories/timezone/</guid>
+      <guid>http://www.gmiao.top/categories/timezone/</guid>
       <description></description>
     </item>
     
