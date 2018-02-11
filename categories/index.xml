@@ -11,15 +11,6 @@
     
     
     <item>
-      <title>Hugo</title>
-      <link>http://www.gmiao.top/categories/hugo/</link>
-      <pubDate>Mon, 22 Feb 2016 19:21:24 +0800</pubDate>
-      
-      <guid>http://www.gmiao.top/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ide</title>
       <link>http://www.gmiao.top/categories/ide/</link>
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
@@ -61,24 +52,6 @@
       <pubDate>Mon, 22 Feb 2016 15:48:44 +0800</pubDate>
       
       <guid>http://www.gmiao.top/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pytz</title>
-      <link>http://www.gmiao.top/categories/pytz/</link>
-      <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
-      
-      <guid>http://www.gmiao.top/categories/pytz/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Timezone</title>
-      <link>http://www.gmiao.top/categories/timezone/</link>
-      <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
-      
-      <guid>http://www.gmiao.top/categories/timezone/</guid>
       <description></description>
     </item>
     

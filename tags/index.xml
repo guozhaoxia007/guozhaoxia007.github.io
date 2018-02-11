@@ -6,9 +6,46 @@
     <description>Recent content in Tags on 喵大人的空间</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
+    <lastBuildDate>Mon, 22 Feb 2016 19:21:24 +0800</lastBuildDate>
     
 	<atom:link href="http://www.gmiao.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://www.gmiao.top/tags/hugo/</link>
+      <pubDate>Mon, 22 Feb 2016 19:21:24 +0800</pubDate>
+      
+      <guid>http://www.gmiao.top/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://www.gmiao.top/tags/python/</link>
+      <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
+      
+      <guid>http://www.gmiao.top/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pytz</title>
+      <link>http://www.gmiao.top/tags/pytz/</link>
+      <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
+      
+      <guid>http://www.gmiao.top/tags/pytz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Timezone</title>
+      <link>http://www.gmiao.top/tags/timezone/</link>
+      <pubDate>Sat, 20 Feb 2016 23:18:34 +0800</pubDate>
+      
+      <guid>http://www.gmiao.top/tags/timezone/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
