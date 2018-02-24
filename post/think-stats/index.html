@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Think Stats</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Zhaoxia Guo" />
+  <meta name="description" content="Think Stats Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 前言 这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。
+ 导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。 单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。 成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。 多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。 估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？ 可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。  这本书采用了一种计算方法，它比数学方法有许多优点： - 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。 - 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。 - 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。 - 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。 - 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。
+这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。
+为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源： - 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康&amp;rdquo;。见 https://www.cdc.gov/nchs/nsfg.htm. - 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 https://www.cdc.gov/BRFSS/
+其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.
+这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。
+0.1 How I wrote this book &amp;hellip; 有用网站 http://www.reddit.com/r/statistics
+0.2 Using the code 这本书用到的代码和数据在https://github.com/AllenDowney/ThinkStats2. &amp;hellip; 作者用的开发环境 http://continuum." />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Think Stats" />
+    <meta name="twitter:description" content="Think Stats Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 前言 这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。
+ 导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。 单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。 成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。 多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。 估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？ 可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。  这本书采用了一种计算方法，它比数学方法有许多优点： - 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。 - 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。 - 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。 - 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。 - 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。
+这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。
+为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源： - 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康&amp;rdquo;。见 https://www.cdc.gov/nchs/nsfg.htm. - 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 https://www.cdc.gov/BRFSS/
+其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.
+这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。
+0.1 How I wrote this book &amp;hellip; 有用网站 http://www.reddit.com/r/statistics
+0.2 Using the code 这本书用到的代码和数据在https://github.com/AllenDowney/ThinkStats2. &amp;hellip; 作者用的开发环境 http://continuum." />
+    <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Think Stats" />
+  <meta property="og:description" content="Think Stats Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 前言 这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。
+ 导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。 单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。 成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。 多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。 估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？ 可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。  这本书采用了一种计算方法，它比数学方法有许多优点： - 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。 - 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。 - 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。 - 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。 - 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。
+这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。
+为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源： - 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康&amp;rdquo;。见 https://www.cdc.gov/nchs/nsfg.htm. - 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 https://www.cdc.gov/BRFSS/
+其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.
+这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。
+0.1 How I wrote this book &amp;hellip; 有用网站 http://www.reddit.com/r/statistics
+0.2 Using the code 这本书用到的代码和数据在https://github.com/AllenDowney/ThinkStats2. &amp;hellip; 作者用的开发环境 http://continuum." />
+  <meta property="og:url" content="http://www.gmiao.top/post/think-stats/" />
+  <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.36" />
+
+
+<link rel="canonical" href="http://www.gmiao.top/post/think-stats/" />
+<link rel="alternative" href="http://www.gmiao.top/index.xml" title="喵大人的空间" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="cclCN1vd5XZIHBrt1QgxLBs5NeKj9AmDa-Aa31BXLqQ" />
+<meta name="msvalidate.01" content="" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="喵大人的空间" />
+<meta name="msapplication-tooltip" content="喵大人的空间" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://www.gmiao.top/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://www.gmiao.top/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://www.gmiao.top/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://www.gmiao.top/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://www.gmiao.top/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://www.gmiao.top/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://www.gmiao.top/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#SOHUCS"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://www.gmiao.top/img/avatar.jpeg" alt="Avatar">
+  
+  <h2 class="title">喵大人的空间</h2>
+  
+  <p class="subtitle">✧(•̀ω•́)✧</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/post">文章</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/about/">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guozhaoxia123@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guozhaoxia007" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/img/wechat-qrcode.jpeg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Think Stats</h1>
+      <p class="post-meta">@Zhaoxia Guo · Feb 24, 2018 · 2 min read</p>
+    </header>
+    <article class="post-content">
+
+<h5 id="think-stats-http-greenteapress-com-thinkstats2-thinkstats2-pdf"><a href="http://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats</a></h5>
+
+<h5 id="exploratory-data-analysis-in-python">Exploratory Data Analysis in Python</h5>
+
+<h5 id="version-2-0-35">Version 2.0.35</h5>
+
+<h5 id="allen-b-downey">Allen B. Downey</h5>
+
+<h5 id="green-tea-press">Green Tea Press</h5>
+
+<h5 id="needham-massachusetts">Needham, Massachusetts</h5>
+
+<h2 id="前言">前言</h2>
+
+<p>这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。</p>
+
+<ul>
+<li>导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。</li>
+<li>单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。</li>
+<li>成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。</li>
+<li>多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。</li>
+<li>估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？</li>
+<li>可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。</li>
+</ul>
+
+<p>这本书采用了一种计算方法，它比数学方法有许多优点：
+- 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。
+- 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。
+- 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。
+- 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。
+- 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。</p>
+
+<p>这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。</p>
+
+<p>为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源：
+- 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康&rdquo;。见 <a href="https://www.cdc.gov/nchs/nsfg.htm">https://www.cdc.gov/nchs/nsfg.htm</a>.
+- 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 <a href="https://www.cdc.gov/BRFSS/">https://www.cdc.gov/BRFSS/</a></p>
+
+<p>其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.</p>
+
+<p>这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。</p>
+
+<h3 id="0-1-how-i-wrote-this-book">0.1 How I wrote this book</h3>
+
+<p>&hellip;
+有用网站  <a href="http://www.reddit.com/r/statistics">http://www.reddit.com/r/statistics</a></p>
+
+<h3 id="0-2-using-the-code">0.2 Using the code</h3>
+
+<p>这本书用到的代码和数据在<a href="https://github.com/AllenDowney/ThinkStats2">https://github.com/AllenDowney/ThinkStats2</a>.
+&hellip;
+作者用的开发环境 <a href="http://continuum.io/downloads">http://continuum.io/downloads</a>.
+不用这个环境的话，那么需要安装以下包：pandas, NumPy, SciPy, StatsModels, matplotlib.</p>
+
+<p>下载好代码后，在ThinkStats2/code下运行nsfg.py，直到出现&rdquo;All tets passed&rdquo;.</p>
+
+<p>一部分练习使用了IPython,  <a href="http://ipython.org/ipython-doc/stable/notebook/">http://ipython.org/ipython-doc/stable/notebook/</a>
+notebook.html.</p>
+
+<p>&hellip;</p>
+
+<h3 id="contributor-list">Contributor List</h3>
+
+<p>&hellip;</p>
+
+<h2 id="1-数据分析探索">1 数据分析探索</h2>
+
+<h3 id="1-1-一个分析方法">1.1 一个分析方法</h3>
+
+<h3 id="1-2-全国家庭成长调查-nsfg">1.2 全国家庭成长调查（NSFG）</h3>
+
+<h3 id="1-3-导入数据">1.3 导入数据</h3>
+
+<h3 id="1-4-dataframes">1.4 DataFrames</h3>
+
+<h3 id="1-5-变量">1.5 变量</h3>
+
+<h3 id="1-6-transformation">1.6 Transformation</h3>
+
+<h3 id="1-7-validation">1.7 Validation</h3>
+
+<h3 id="1-8-interpretation">1.8 Interpretation</h3>
+
+<h3 id="1-9-exercises">1.9 Exercises</h3>
+
+<h3 id="1-10-glossary">1.10 Glossary</h3>
+
+<h2 id="2-distributions">2 Distributions</h2>
+
+<h3 id="2-1-historgrams">2.1 Historgrams</h3>
+
+<h3 id="2-2-representing-histograms">2.2 Representing histograms</h3>
+
+<h3 id="2-3-plotting-histograms">2.3 Plotting histograms</h3>
+
+<h3 id="2-4-nsfg-variables">2.4 NSFG variables</h3>
+
+<h3 id="2-5-outliers">2.5 Outliers</h3>
+
+<h3 id="2-6-first-babies">2.6 First babies</h3>
+
+<h3 id="2-7-summarizing-distributions">2.7 Summarizing distributions</h3>
+
+<h3 id="2-8-variance">2.8 Variance</h3>
+
+<h3 id="2-9-effect-size">2.9 Effect size</h3>
+
+<h3 id="2-10-reporting-results">2.10 Reporting results</h3>
+
+<h3 id="2-11-exercises">2.11 Exercises</h3>
+
+<h3 id="2-12-glossary">2.12 Glossary</h3>
+
+<h2 id="probability-mass-functions">Probability mass functions</h2>
+
+<h3 id="3-1-pmfs">3.1 Pmfs</h3>
+
+<h3 id="3-2-plotting-pmfs">3.2 Plotting PMFs</h3>
+
+<h3 id="3-3-other-visulizations">3.3 Other visulizations</h3>
+
+<h3 id="3-4-the-class-size-paradox">3.4 The class size paradox</h3>
+
+<h3 id="3-5-dataframe-indexing">3.5 DataFrame indexing</h3>
+
+<h3 id="3-6-exercises">3.6 Exercises</h3>
+
+<h3 id="3-7-glossary">3.7 Glossary</h3>
+
+<h2 id="4-cumulative-distribution-functions">4 Cumulative distribution functions</h2>
+
+<h3 id="4-1-the-limits-of-pmfs">4.1 THe limits of PMFs</h3>
+
+<h3 id="4-2-percentiles">4.2 Percentiles</h3>
+
+<h3 id="4-3-cdfs">4.3 CDFs</h3>
+
+<h3 id="4-4-representing-cdfs">4.4 Representing CDFs</h3>
+
+<h3 id="4-5-comparing-cdfs">4.5 Comparing CDFs</h3>
+
+<h3 id="4-6-percentile-based-statistics">4.6 Percentile-based statistics</h3>
+
+<h3 id="4-7-random-numbers">4.7 Random numbers</h3>
+
+<h3 id="4-8-comparing-percentile-ranks">4.8 Comparing percentile ranks</h3>
+
+<h3 id="4-9-exercises">4.9 Exercises</h3>
+
+<h3 id="4-10-glossary">4.10 Glossary</h3>
+
+<h2 id="5-modeling-distributions">5 Modeling distributions</h2>
+
+<h3 id="5-1-the-exponential-distribution">5.1 The exponential distribution</h3>
+
+<h3 id="5-2-the-normal-distribution">5.2 the normal distribution</h3>
+
+<h3 id="5-3-normal-probability-plot">5.3 Normal probability plot</h3>
+
+<h3 id="5-4-the-lognormal-distribution">5.4 The lognormal distribution</h3>
+
+<h3 id="5-5-the-pareto-distribution">5.5 The pareto distribution</h3>
+
+<h3 id="5-6-generating-random-numbers">5.6 Generating random numbers</h3>
+
+<h3 id="5-7-why-model">5.7 Why model?</h3>
+
+<h3 id="5-8-exercises">5.8 Exercises</h3>
+
+<h3 id="5-9-glossary">5.9 Glossary</h3>
+
+<h2 id="6-probability-density-functions">6 Probability density functions</h2>
+
+<h3 id="6-1-pdfs">6.1 PDFs</h3>
+
+<h3 id="6-2-kernel-density-estimation">6.2 Kernel density estimation</h3>
+
+<h3 id="6-3-the-distribution-framework">6.3 The distribution framework</h3>
+
+<h3 id="6-4-hist-implementation">6.4 Hist implementation</h3>
+
+<h3 id="6-5-pmf-implementation">6.5 Pmf implementation</h3>
+
+<h3 id="6-6-cdf-implementation">6.6 Cdf implementation</h3>
+
+<h3 id="6-7-moments">6.7 Moments</h3>
+
+<h3 id="6-8-skewness">6.8 Skewness</h3>
+
+<h3 id="6-9-exercises">6.9 Exercises</h3>
+
+<h3 id="6-10-glossary">6.10 Glossary</h3>
+
+<h2 id="7-relationships-between-variables">7 Relationships between variables</h2>
+
+<h3 id="7-1-scatter-plots">7.1 Scatter plots</h3>
+
+<h3 id="7-2-characterizing-relationships">7.2 Characterizing relationships</h3>
+
+<h3 id="7-3-correlation">7.3 Correlation</h3>
+
+<h3 id="7-4-covariance">7.4 Covariance</h3>
+
+<h3 id="7-5-pearson-s-correlation">7.5 Pearson&rsquo;s correlation</h3>
+
+<h3 id="7-6-nonlinear-relationships">7.6 Nonlinear relationships</h3>
+
+<h3 id="7-7-spearmans-rank-correlation">7.7 Spearmans&rsquo; rank correlation</h3>
+
+<h3 id="7-8-correlation-and-causation">7.8 Correlation and causation</h3>
+
+<h3 id="7-9-exercises">7.9 Exercises</h3>
+
+<h3 id="7-10-glossary">7.10 Glossary</h3>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+      <div id="cyReward" role="cylabs" data-use="reward"></div>
+      <script src="//changyan.itc.cn/js/lib/jquery.js"></script>
+      <script src="//changyan.sohu.com/js/changyan.labs.https.js?appid=cytsuhDns"></script>
+      <div id="SOHUCS" sid="/post/think-stats/" ></div>
+      <script>
+      (function(){
+      var appid = 'cytsuhDns';
+      var conf = 'prod_2ed8389aa7aba905dc76e2051c5aa7ee';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 喵大人的空间</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://www.gmiao.top/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-113963876-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0639f40880962f40d8ee87a4582274a0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

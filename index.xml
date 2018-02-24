@@ -21,7 +21,41 @@
     </item>
     
     <item>
-      <title>postgis</title>
+      <title>R in action</title>
+      <link>http://www.gmiao.top/post/2018/02/r-in-action/</link>
+      <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/2018/02/r-in-action/</guid>
+      <description>安装 https://cran.r-project.org/</description>
+    </item>
+    
+    <item>
+      <title>Think Stats</title>
+      <link>http://www.gmiao.top/post/think-stats/</link>
+      <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/think-stats/</guid>
+      <description>Think Stats Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 前言 这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。
+ 导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。 单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。 成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。 多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。 估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？ 可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。  这本书采用了一种计算方法，它比数学方法有许多优点： - 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。 - 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。 - 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。 - 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。 - 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。
+这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。
+为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源： - 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康&amp;rdquo;。见 https://www.cdc.gov/nchs/nsfg.htm. - 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 https://www.cdc.gov/BRFSS/
+其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.
+这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。
+0.1 How I wrote this book &amp;hellip; 有用网站 http://www.reddit.com/r/statistics
+0.2 Using the code 这本书用到的代码和数据在https://github.com/AllenDowney/ThinkStats2. &amp;hellip; 作者用的开发环境 http://continuum.</description>
+    </item>
+    
+    <item>
+      <title>booklist</title>
+      <link>http://www.gmiao.top/post/booklist/</link>
+      <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/booklist/</guid>
+      <description> 2018 R in action Think Stats Think Bayes An Introduction to Statistical Learning  </description>
+    </item>
+    
+    <item>
+      <title>the date-line and the poles</title>
       <link>http://www.gmiao.top/post/2018/02/date-line/</link>
       <pubDate>Thu, 08 Feb 2018 15:07:13 +0800</pubDate>
       
