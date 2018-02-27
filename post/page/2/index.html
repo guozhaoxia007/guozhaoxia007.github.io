@@ -226,25 +226,6 @@
       
         <article class="post-entry">
   <header class="post-header">
-    <h3 class="post-title"><a href="http://www.gmiao.top/post/2016/02/python-ide/" class="post-link">python IDE</a></h3>
-    <p class="post-meta">@Zhaoxia Guo · Feb 22, 2016 · 2 min read</p>
-  </header>
-  
-  <p class="post-summary">VIM 1. 参考链接： https://github.com/yangyangwithgnu/use_vim_as_ide https://github.com/spf13/spf13-vim
-2. install sudo pip install pyflakes
-sudo pip install pylint
-sudo pip install pep8
-或者使用这个vim插件
-https://github.com/scrooloose/syntastic
-3. 我的vimrc call pathogen#infect() syntax enable syntax on set background=dark set number set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set laststatus=2 set ruler &#34; set cursorcolumn &#34; 突出显示当前列 set cursorline &#34; 突出显示当前行 set hlsearch set incsearch set ignorecase set autoindent set nowrap set showcmd &#34; 显示输入命令 let g:solarized_termcolors=16 colorscheme solarized set textwidth=79 autocmd FileType text setlocal textwidth=78 &#34; 一旦一行的字符超出79个的话就把那些字符的背景设为红色 highlight OverLength ctermbg=red ctermfg=white guibg=#592929 match OverLength /\%80v.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="http://www.gmiao.top/post/2016/02/python-ide/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
     <h3 class="post-title"><a href="http://www.gmiao.top/post/2016/02/functional_programming/" class="post-link">函数式编程</a></h3>
     <p class="post-meta">@Zhaoxia Guo · Feb 21, 2016 · 2 min read</p>
   </header>
@@ -267,6 +248,26 @@ https://github.com/scrooloose/syntastic
   <p class="post-summary">pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&#39;UTC&#39;, &#39;US/Eastern&#39;, &#39;Asia/Shanghai&#39;, &#39;Asia/Kolkata&#39;, &#39;Asia/Jakarta&#39;] fmt = &#39;%Y-%m-%d%H:%M:%S %Z%z&#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST&#43;0800 2015-04-01 08:00:00 IST&#43;0530 2015-04-01 08:00:00 WIB&#43;0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST&#43;0800 2015-12-01 08:00:00 IST&#43;0530 2015-12-01 08:00:00 WIB&#43;0700 实验2 In [146]: now = int(time.</p>
   <footer class="post-footer">
     <a class="read-more" href="http://www.gmiao.top/post/2016/02/pytz/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="http://www.gmiao.top/post/think-stats/" class="post-link"></a></h3>
+    <p class="post-meta">@Zhaoxia Guo · Jan 1, 0001 · 3 min read</p>
+  </header>
+  
+  <p class="post-summary">Think Stats Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 前言 这本书介绍了探索性数据分析的实用工具。本书的组织遵循了我开始处理数据集时使用的流程。
+ 导入和清理：无论数据是什么格式，通常会花一段时间和精力去读取，清理和转换数据，并检查所有的内容是否完整地通过了翻译过程。 单变量探索：我通常一次检查一个变量，找出变量的含义，查看值的分布，选择适当的汇总统计数据。 成对探索：为了识别变量之间可能存在的关系，我查看表和散点图，计算相关性和线性拟合。 多变量分析：如果变量之间存在明显的关系，我使用多元回归来增加控制变量，并研究更复杂的关系。 估计和假设检验：当报告统计结果时，回答三个问题很重要：影响有多大？如果再次运行相同的测量，我们应该期待有多大的可变性？明显的效果可能是偶然的吗？ 可视化：在探索过程中，可视化是寻找可能的关系和效果的重要工具。如果一个明显的效果能经受住审查，可视化是一种有效的交流结果的方式。  这本书采用了一种计算方法，它比数学方法有许多优点： - 我使用Python代码展示大多数想法，而不是数学符号。一般来说，Python代码更易读，也因为它是可执行的，读者可以下载它，运行它，并修改它。 - 每个章节都包括读者可用来部署和巩固学习的练习。当你编写程序时，你用代码表达你的理解；当你调试程序时，你也纠正了你的理解。 - 一些练习包括测试统计行为的实验。例如，您可以通过生成随机抽样和计算它们的总和来探索中心极限定理（CLT）。由此产生的可视化演示了为什么CLT生效，什么时候又不生效。 - 一些很难掌握的数学概念很容易通过模拟来理解。例如，我们近似的p值的随机模拟，增强了P值的意义。 - 因为这本书是基于通用编程语言（Python）的，所以读者可以从几乎所有的源中导入数据。它们不仅限于对特定统计工具进行清理和格式化的数据集。
+这本书适合以项目为基础的方法。在我的课堂上，学生们学习一个学期的项目，要求他们提出一个统计问题，找到一个能解决这个问题的数据集，并将他们所学的每一种技术应用到他们自己的数据中。
+为了证明我的统计分析方法，这本书提出了一个贯穿所有章节的案例研究。它使用的数据来自两个来源： - 全国家庭成长调查（NSFG），由美国疾病控制和预防中心（CDC）进行收集“家庭生活信息、结婚、离婚、怀孕、不孕、使用避孕方法，以及男性和女性的健康”。见 https://www.cdc.gov/nchs/nsfg.htm. - 行为风险因素监测系统（BRFSS），由国家慢性病预防和健康促进”追踪美国的卫生条件和危险行为中心进行。” 见 https://www.cdc.gov/BRFSS/
+其它例子的数据来源于IRS，the U.S. Census,和the Boston Marathon.
+这第二版的《思考统计》包括第一章的章节，其中许多章节被大量修订，关于回归、时间序列分析、生存分析和分析方法的新章节。以前的版本没有使用pandas, SciPy或StatsModels，所以这些是新的。
+0.1 How I wrote this book … 有用网站 http://www.reddit.com/r/statistics
+0.2 Using the code 这本书用到的代码和数据在https://github.com/AllenDowney/ThinkStats2. … 作者用的开发环境 http://continuum.</p>
+  <footer class="post-footer">
+    <a class="read-more" href="http://www.gmiao.top/post/think-stats/">Read More →</a>
   </footer>
 </article>
 
