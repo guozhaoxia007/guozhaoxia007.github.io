@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 喵大人的空间</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sat, 24 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.gmiao.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>成都三年</title>
+      <link>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</guid>
+      <description>连雨不觉春去，一晴方觉夏深。</description>
+    </item>
     
     <item>
       <title>R in action</title>
@@ -67,15 +76,6 @@ MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,
       
       <guid>http://www.gmiao.top/post/2018/02/postgis-2/</guid>
       <description>0. 创建空间字段准备 CREATE EXTENSION postgis;  -- Geometry -- Method 1 SELECT AddGeometryColumn (&#39;scheme&#39;，&#39;cities&#39;, &#39;the_geom&#39;, 4326, &#39;POINT&#39;, 2); AddGeometryColumn( &amp;lt;schema_name&amp;gt;, &amp;lt;table_name&amp;gt;, &amp;lt;column_name&amp;gt;, &amp;lt;srid&amp;gt;, &amp;lt;type&amp;gt;, &amp;lt;dimension&amp;gt; ) -- Method 2 CREATE TABLE ROADS ( ID int4, ROAD_NAME varchar(25), geom geometry(LINESTRING,4326) ); CREATE TABLE global_points ( id SERIAL PRIMARY KEY, name VARCHAR(64), location GEOGRAPHY(POINT,4326) ); -- Method 3 ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);  -- geography CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINT,4326) ); CREATE TABLE testgeog(gid serial PRIMARY KEY, the_geog geography(POINTZ,4326) );  1.</description>
-    </item>
-    
-    <item>
-      <title>成都三年</title>
-      <link>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</link>
-      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</guid>
-      <description>连雨不觉春去，一晴方觉夏深。</description>
     </item>
     
     <item>
