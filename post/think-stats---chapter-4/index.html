@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>成都一年</title>
+  <title></title>
 
   
   
@@ -16,22 +16,22 @@
 
   
   <meta name="author" content="Zhaoxia Guo" />
-  <meta name="description" content="梦里不知身是客" />
+  <meta name="description" content="Think Stats - Chapter 4 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 4 Cumulative distribution functions 4.1 THe limits of PMFs 4.2 Percentiles 4.3 CDFs 4.4 Representing CDFs 4.5 Comparing CDFs 4.6 Percentile-based statistics 4.7 Random numbers 4.8 Comparing percentile ranks 4.9 Exercises 4.10 Glossary 5 Modeling distributions 5.1 The exponential distribution 5.2 the normal distribution 5.3 Normal probability plot 5.4 The lognormal distribution 5." />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="成都一年" />
-    <meta name="twitter:description" content="梦里不知身是客" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="Think Stats - Chapter 4 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 4 Cumulative distribution functions 4.1 THe limits of PMFs 4.2 Percentiles 4.3 CDFs 4.4 Representing CDFs 4.5 Comparing CDFs 4.6 Percentile-based statistics 4.7 Random numbers 4.8 Comparing percentile ranks 4.9 Exercises 4.10 Glossary 5 Modeling distributions 5.1 The exponential distribution 5.2 the normal distribution 5.3 Normal probability plot 5.4 The lognormal distribution 5." />
     <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="成都一年" />
-  <meta property="og:description" content="梦里不知身是客" />
-  <meta property="og:url" content="http://www.gmiao.top/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="Think Stats - Chapter 4 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 4 Cumulative distribution functions 4.1 THe limits of PMFs 4.2 Percentiles 4.3 CDFs 4.4 Representing CDFs 4.5 Comparing CDFs 4.6 Percentile-based statistics 4.7 Random numbers 4.8 Comparing percentile ranks 4.9 Exercises 4.10 Glossary 5 Modeling distributions 5.1 The exponential distribution 5.2 the normal distribution 5.3 Normal probability plot 5.4 The lognormal distribution 5." />
+  <meta property="og:url" content="http://www.gmiao.top/post/think-stats---chapter-4/" />
   <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
 
 
@@ -40,7 +40,7 @@
 <meta name="generator" content="Hugo 0.36" />
 
 
-<link rel="canonical" href="http://www.gmiao.top/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/" />
+<link rel="canonical" href="http://www.gmiao.top/post/think-stats---chapter-4/" />
 <link rel="alternative" href="http://www.gmiao.top/index.xml" title="喵大人的空间" type="application/atom+xml" />
 
 
@@ -220,15 +220,113 @@
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">成都一年</h1>
-      <p class="post-meta">@Zhaoxia Guo · Mar 3, 2016 · 1 min read</p>
+      <h1 class="post-title"></h1>
+      <p class="post-meta">@Zhaoxia Guo · Jan 1, 0001 · 1 min read</p>
     </header>
-    <article class="post-content"><p>梦里不知身是客</p>
+    <article class="post-content">
+
+<h1 id="think-stats-chapter-4-http-greenteapress-com-thinkstats2-thinkstats2-pdf"><a href="http://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats - Chapter 4</a></h1>
+
+<h5 id="exploratory-data-analysis-in-python">Exploratory Data Analysis in Python</h5>
+
+<h5 id="version-2-0-35">Version 2.0.35</h5>
+
+<h5 id="allen-b-downey">Allen B. Downey</h5>
+
+<h5 id="green-tea-press">Green Tea Press</h5>
+
+<h5 id="needham-massachusetts">Needham, Massachusetts</h5>
+
+<h2 id="4-cumulative-distribution-functions">4 Cumulative distribution functions</h2>
+
+<h3 id="4-1-the-limits-of-pmfs">4.1 THe limits of PMFs</h3>
+
+<h3 id="4-2-percentiles">4.2 Percentiles</h3>
+
+<h3 id="4-3-cdfs">4.3 CDFs</h3>
+
+<h3 id="4-4-representing-cdfs">4.4 Representing CDFs</h3>
+
+<h3 id="4-5-comparing-cdfs">4.5 Comparing CDFs</h3>
+
+<h3 id="4-6-percentile-based-statistics">4.6 Percentile-based statistics</h3>
+
+<h3 id="4-7-random-numbers">4.7 Random numbers</h3>
+
+<h3 id="4-8-comparing-percentile-ranks">4.8 Comparing percentile ranks</h3>
+
+<h3 id="4-9-exercises">4.9 Exercises</h3>
+
+<h3 id="4-10-glossary">4.10 Glossary</h3>
+
+<h2 id="5-modeling-distributions">5 Modeling distributions</h2>
+
+<h3 id="5-1-the-exponential-distribution">5.1 The exponential distribution</h3>
+
+<h3 id="5-2-the-normal-distribution">5.2 the normal distribution</h3>
+
+<h3 id="5-3-normal-probability-plot">5.3 Normal probability plot</h3>
+
+<h3 id="5-4-the-lognormal-distribution">5.4 The lognormal distribution</h3>
+
+<h3 id="5-5-the-pareto-distribution">5.5 The pareto distribution</h3>
+
+<h3 id="5-6-generating-random-numbers">5.6 Generating random numbers</h3>
+
+<h3 id="5-7-why-model">5.7 Why model?</h3>
+
+<h3 id="5-8-exercises">5.8 Exercises</h3>
+
+<h3 id="5-9-glossary">5.9 Glossary</h3>
+
+<h2 id="6-probability-density-functions">6 Probability density functions</h2>
+
+<h3 id="6-1-pdfs">6.1 PDFs</h3>
+
+<h3 id="6-2-kernel-density-estimation">6.2 Kernel density estimation</h3>
+
+<h3 id="6-3-the-distribution-framework">6.3 The distribution framework</h3>
+
+<h3 id="6-4-hist-implementation">6.4 Hist implementation</h3>
+
+<h3 id="6-5-pmf-implementation">6.5 Pmf implementation</h3>
+
+<h3 id="6-6-cdf-implementation">6.6 Cdf implementation</h3>
+
+<h3 id="6-7-moments">6.7 Moments</h3>
+
+<h3 id="6-8-skewness">6.8 Skewness</h3>
+
+<h3 id="6-9-exercises">6.9 Exercises</h3>
+
+<h3 id="6-10-glossary">6.10 Glossary</h3>
+
+<h2 id="7-relationships-between-variables">7 Relationships between variables</h2>
+
+<h3 id="7-1-scatter-plots">7.1 Scatter plots</h3>
+
+<h3 id="7-2-characterizing-relationships">7.2 Characterizing relationships</h3>
+
+<h3 id="7-3-correlation">7.3 Correlation</h3>
+
+<h3 id="7-4-covariance">7.4 Covariance</h3>
+
+<h3 id="7-5-pearson-s-correlation">7.5 Pearson&rsquo;s correlation</h3>
+
+<h3 id="7-6-nonlinear-relationships">7.6 Nonlinear relationships</h3>
+
+<h3 id="7-7-spearmans-rank-correlation">7.7 Spearmans&rsquo; rank correlation</h3>
+
+<h3 id="7-8-correlation-and-causation">7.8 Correlation and causation</h3>
+
+<h3 id="7-9-exercises">7.9 Exercises</h3>
+
+<h3 id="7-10-glossary">7.10 Glossary</h3>
 </article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>784</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>736809</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -236,7 +334,7 @@
       <div id="cyReward" role="cylabs" data-use="reward"></div>
       <script src="//changyan.itc.cn/js/lib/jquery.js"></script>
       <script src="//changyan.sohu.com/js/changyan.labs.https.js?appid=cytsuhDns"></script>
-      <div id="SOHUCS" sid="/post/2016/03/%E6%88%90%E9%83%BD%E4%B8%80%E5%91%A8%E5%B9%B4/" ></div>
+      <div id="SOHUCS" sid="/post/think-stats---chapter-4/" ></div>
       <script>
       (function(){
       var appid = 'cytsuhDns';

@@ -79,6 +79,15 @@ MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,
     </item>
     
     <item>
+      <title>成都三年</title>
+      <link>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/2018/04/%E6%88%90%E9%83%BD%E4%B8%89%E5%B9%B4/</guid>
+      <description>连雨不觉春去，一晴方觉夏深。</description>
+    </item>
+    
+    <item>
       <title>Python-ORM</title>
       <link>http://www.gmiao.top/post/2016/04/python-orm/</link>
       <pubDate>Wed, 13 Apr 2016 16:05:10 +0800</pubDate>
@@ -158,6 +167,44 @@ https://github.com/scrooloose/syntastic
       
       <guid>http://www.gmiao.top/post/2016/02/pytz/</guid>
       <description>pytz使用 使用场景  查询，如果前端输入start_time, end_time，后台计算月报（每天开始结束时间）和年报（每月开始结束时间） 定时任务，统计前一天的数据，即知道年月日，后台计算start_time, end_time  实验1，夏令时和冬令时 # 美东、中国标准、印度标准、印尼西部 [&amp;#39;UTC&amp;#39;, &amp;#39;US/Eastern&amp;#39;, &amp;#39;Asia/Shanghai&amp;#39;, &amp;#39;Asia/Kolkata&amp;#39;, &amp;#39;Asia/Jakarta&amp;#39;] fmt = &amp;#39;%Y-%m-%d%H:%M:%S %Z%z&amp;#39; for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,4,1,8,0,0)) print loc_dt.strftime(fmt) 2015-04-01 08:00:00 EDT-0400 2015-04-01 08:00:00 CST+0800 2015-04-01 08:00:00 IST+0530 2015-04-01 08:00:00 WIB+0700 for tz in timezones: p_tz = timezone(tz) loc_dt = p_tz.localize(datetime(2015,12,1,8,0,0)) print loc_dt.strftime(fmt) 2015-12-01 08:00:00 EST-0500 2015-12-01 08:00:00 CST+0800 2015-12-01 08:00:00 IST+0530 2015-12-01 08:00:00 WIB+0700 实验2 In [146]: now = int(time.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://www.gmiao.top/post/think-stats---chapter-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/think-stats---chapter-3/</guid>
+      <description>Think Stats - Chapter 3 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 3. Probability mass functions概率质量函数 本章代码在probability.py中。
+3.1 Pmfs 另一种表示分布的方式是概率质量函数(PMF)，即每个值与它的概率的映射。概率是在同样样本大小n中一部分的频率。从频率得到概率，我们可以除以n,这叫做正态化。
+给出一个Hist,我们可以生成一个值与概率映射的字典：
+n = hist.Total() d = {} for x, freq in hist.Items(): d[x] = freq / n  或者我们可以用Pmf类。就像Hist,Pmf结构可以传入一个list， pandas Series, dictionary, Hist或其它Pmf对象。下面是以List的例子：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; pmf = thinkstats2.Pmf([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; pmf Pmf({1: 0.2, 2: 0.4, 3: 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://www.gmiao.top/post/think-stats---chapter-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/think-stats---chapter-4/</guid>
+      <description>Think Stats - Chapter 4 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 4 Cumulative distribution functions 4.1 THe limits of PMFs 4.2 Percentiles 4.3 CDFs 4.4 Representing CDFs 4.5 Comparing CDFs 4.6 Percentile-based statistics 4.7 Random numbers 4.8 Comparing percentile ranks 4.9 Exercises 4.10 Glossary 5 Modeling distributions 5.1 The exponential distribution 5.2 the normal distribution 5.3 Normal probability plot 5.4 The lognormal distribution 5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://www.gmiao.top/post/think-stats-chapter-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.gmiao.top/post/think-stats-chapter-2/</guid>
+      <description>Think Stats - Chapter 2 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 2 分布式 2.1 Historgrams 描述变量的最好方法之一是报告数据集中出现的值，以及每个值出现多少次。这种描述称为变量的分布。
+分布最常见的表示是直方图，它是显示每个值的频率的图。在这种情况下，“频率”是指值出现的次数。
+在Python中，计算频率的一个有效方法是用字典。定义一个序列，t
+hist = {} for x in t: hist[x] = hist.get(x, 0) + 1  字典的结果是值和频率的映射。或者，你可以使用集合模块中定义的计数器类：
+from collections import Counter counter = Counter(t)  Counter计数器对象的结果，是字典的一个子类。
+另一个选项是使用pandas模块里的value_counts。在这本书里我创建了一个类，Hist,表示直方图，并提供操作他们的方法。
+2.2 Representing histograms代表直方图 Hist构造函数可以采取一个序列，字典，pandas系列，或其它Hist. 你可以实例化一个Hist对象：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; hist = thinkstats2.Hist([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; hist Hist({1: 1, 2: 2, 3: 1, 5: 1})  Hist对象提供Freq, 传入一个值返回它的频率：</description>
     </item>
     
     <item>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title></title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Zhaoxia Guo" />
+  <meta name="description" content="Think Stats - Chapter 2 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 2 分布式 2.1 Historgrams 描述变量的最好方法之一是报告数据集中出现的值，以及每个值出现多少次。这种描述称为变量的分布。
+分布最常见的表示是直方图，它是显示每个值的频率的图。在这种情况下，“频率”是指值出现的次数。
+在Python中，计算频率的一个有效方法是用字典。定义一个序列，t
+hist = {} for x in t: hist[x] = hist.get(x, 0) &#43; 1  字典的结果是值和频率的映射。或者，你可以使用集合模块中定义的计数器类：
+from collections import Counter counter = Counter(t)  Counter计数器对象的结果，是字典的一个子类。
+另一个选项是使用pandas模块里的value_counts。在这本书里我创建了一个类，Hist,表示直方图，并提供操作他们的方法。
+2.2 Representing histograms代表直方图 Hist构造函数可以采取一个序列，字典，pandas系列，或其它Hist. 你可以实例化一个Hist对象：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; hist = thinkstats2.Hist([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; hist Hist({1: 1, 2: 2, 3: 1, 5: 1})  Hist对象提供Freq, 传入一个值返回它的频率：" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="Think Stats - Chapter 2 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 2 分布式 2.1 Historgrams 描述变量的最好方法之一是报告数据集中出现的值，以及每个值出现多少次。这种描述称为变量的分布。
+分布最常见的表示是直方图，它是显示每个值的频率的图。在这种情况下，“频率”是指值出现的次数。
+在Python中，计算频率的一个有效方法是用字典。定义一个序列，t
+hist = {} for x in t: hist[x] = hist.get(x, 0) &#43; 1  字典的结果是值和频率的映射。或者，你可以使用集合模块中定义的计数器类：
+from collections import Counter counter = Counter(t)  Counter计数器对象的结果，是字典的一个子类。
+另一个选项是使用pandas模块里的value_counts。在这本书里我创建了一个类，Hist,表示直方图，并提供操作他们的方法。
+2.2 Representing histograms代表直方图 Hist构造函数可以采取一个序列，字典，pandas系列，或其它Hist. 你可以实例化一个Hist对象：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; hist = thinkstats2.Hist([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; hist Hist({1: 1, 2: 2, 3: 1, 5: 1})  Hist对象提供Freq, 传入一个值返回它的频率：" />
+    <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="Think Stats - Chapter 2 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 2 分布式 2.1 Historgrams 描述变量的最好方法之一是报告数据集中出现的值，以及每个值出现多少次。这种描述称为变量的分布。
+分布最常见的表示是直方图，它是显示每个值的频率的图。在这种情况下，“频率”是指值出现的次数。
+在Python中，计算频率的一个有效方法是用字典。定义一个序列，t
+hist = {} for x in t: hist[x] = hist.get(x, 0) &#43; 1  字典的结果是值和频率的映射。或者，你可以使用集合模块中定义的计数器类：
+from collections import Counter counter = Counter(t)  Counter计数器对象的结果，是字典的一个子类。
+另一个选项是使用pandas模块里的value_counts。在这本书里我创建了一个类，Hist,表示直方图，并提供操作他们的方法。
+2.2 Representing histograms代表直方图 Hist构造函数可以采取一个序列，字典，pandas系列，或其它Hist. 你可以实例化一个Hist对象：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; hist = thinkstats2.Hist([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; hist Hist({1: 1, 2: 2, 3: 1, 5: 1})  Hist对象提供Freq, 传入一个值返回它的频率：" />
+  <meta property="og:url" content="http://www.gmiao.top/post/think-stats-chapter-2/" />
+  <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.36" />
+
+
+<link rel="canonical" href="http://www.gmiao.top/post/think-stats-chapter-2/" />
+<link rel="alternative" href="http://www.gmiao.top/index.xml" title="喵大人的空间" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="cclCN1vd5XZIHBrt1QgxLBs5NeKj9AmDa-Aa31BXLqQ" />
+<meta name="msvalidate.01" content="" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="喵大人的空间" />
+<meta name="msapplication-tooltip" content="喵大人的空间" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://www.gmiao.top/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://www.gmiao.top/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://www.gmiao.top/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://www.gmiao.top/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://www.gmiao.top/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://www.gmiao.top/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://www.gmiao.top/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#SOHUCS"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://www.gmiao.top/img/avatar.jpeg" alt="Avatar">
+  
+  <h2 class="title">喵大人的空间</h2>
+  
+  <p class="subtitle">✧(•̀ω•́)✧</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/post">文章</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/about/">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guozhaoxia123@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guozhaoxia007" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/img/wechat-qrcode.jpeg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+      <p class="post-meta">@Zhaoxia Guo · Jan 1, 0001 · 3 min read</p>
+    </header>
+    <article class="post-content">
+
+<h1 id="think-stats-chapter-2-http-greenteapress-com-thinkstats2-thinkstats2-pdf"><a href="http://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats - Chapter 2</a></h1>
+
+<h5 id="exploratory-data-analysis-in-python">Exploratory Data Analysis in Python</h5>
+
+<h5 id="version-2-0-35">Version 2.0.35</h5>
+
+<h5 id="allen-b-downey">Allen B. Downey</h5>
+
+<h5 id="green-tea-press">Green Tea Press</h5>
+
+<h5 id="needham-massachusetts">Needham, Massachusetts</h5>
+
+<h2 id="2-分布式">2 分布式</h2>
+
+<h3 id="2-1-historgrams">2.1 Historgrams</h3>
+
+<p>描述变量的最好方法之一是报告数据集中出现的值，以及每个值出现多少次。这种描述称为变量的分布。</p>
+
+<p>分布最常见的表示是直方图，它是显示每个值的频率的图。在这种情况下，“频率”是指值出现的次数。</p>
+
+<p>在Python中，计算频率的一个有效方法是用字典。定义一个序列，t</p>
+
+<pre><code>hist = {}
+for x in t:
+    hist[x] = hist.get(x, 0) + 1
+</code></pre>
+
+<p>字典的结果是值和频率的映射。或者，你可以使用集合模块中定义的计数器类：</p>
+
+<pre><code>from collections import Counter
+counter = Counter(t)
+</code></pre>
+
+<p>Counter计数器对象的结果，是字典的一个子类。</p>
+
+<p>另一个选项是使用pandas模块里的value_counts。在这本书里我创建了一个类，Hist,表示直方图，并提供操作他们的方法。</p>
+
+<h3 id="2-2-representing-histograms代表直方图">2.2 Representing histograms代表直方图</h3>
+
+<p>Hist构造函数可以采取一个序列，字典，pandas系列，或其它Hist. 你可以实例化一个Hist对象：</p>
+
+<pre><code>&gt;&gt;&gt; import thinkstats2
+&gt;&gt;&gt; hist = thinkstats2.Hist([1, 2, 2, 3, 5])
+&gt;&gt;&gt; hist
+Hist({1: 1, 2: 2, 3: 1, 5: 1})
+</code></pre>
+
+<p>Hist对象提供Freq, 传入一个值返回它的频率：</p>
+
+<pre><code>hist.Freq(2)
+2
+</code></pre>
+
+<p>括号运算符跟上面不一样：</p>
+
+<pre><code>&gt;&gt;&gt; hist[2]
+2
+</code></pre>
+
+<p>如果你想找一个从没出现的值，序列是0.</p>
+
+<pre><code>&gt;&gt;&gt; hist.Freq(4)
+0
+</code></pre>
+
+<p>Values返回一个未排序的列表：</p>
+
+<pre><code>&gt;&gt;&gt; hist.Values()
+[1, 5, 3, 2]
+</code></pre>
+
+<p>要依次遍历这些值，可以使用内置函数排序sorted:</p>
+
+<pre><code>for val in sorted(hist.Values()):
+    print(val, hist.Freq(val))
+</code></pre>
+
+<p>或者你可以使用Items遍历值-频率：</p>
+
+<pre><code>for val, freq in hist.Items():
+    print(val, freq)
+</code></pre>
+
+<h3 id="2-3-plotting-histograms">2.3 Plotting histograms</h3>
+
+<p>在这本书里我写了一个模块thinkplot.py，它提供绘制Hists和其它对象的函数。它是基于pyplot, 是matplotlib包的一部分。见0.2节关于matplotlib的安装信息。</p>
+
+<p>用thinkplot绘制hist:</p>
+
+<pre><code>&gt;&gt;&gt; import thinkplot
+&gt;&gt;&gt; thinkplot.Hist(hist)
+&gt;&gt;&gt; thinkplot.Show(xlabel='value', ylabel='frequency')
+</code></pre>
+
+<p>你可以阅读thinkplot文档，在 <a href="http://greenteapress.com/thinkstats2/thinkplot.html">http://greenteapress.com/thinkstats2/thinkplot.html</a></p>
+
+<h3 id="2-4-nsfg-variables">2.4 NSFG variables</h3>
+
+<p>现在让我们说回NSFG数据。这章的代码在first.py中。0.2节说明了下载和运行代码的信息。</p>
+
+<p>当你开始处理一个新的数据集，我建议你去探索你计划一次使用一个的变量，看直方图是一个好方法。</p>
+
+<p>在1.6节我们将agepreg从世纪转成年，并合并birthwgt_lb和birthwgt_oz到一个单独的数字totalwgt_lb上。在这节我将使用这些变量演示直方图的一些特性。</p>
+
+<p>从读取数据和选择活产记录开始：</p>
+
+<pre><code>preg = nsfg.ReadFemPreg()
+live = preg[preg.outcome == 1]
+</code></pre>
+
+<p>括号里的表达式是一个布尔系列,它从DataFrame选了一些行又返回一个新的DataFrame. 接下来我生成和绘制了活产的birthwgt_lb的直方图。</p>
+
+<pre><code>hist = thinkstats2.Hist(live.birthwgt_lb, label='birthwgt_lb')
+thinkplot.Hist(hist)
+thinkplot.Show(xlabel='pounds', ylabel='frequency')
+</code></pre>
+
+<p>当传给Hist的参数是一个pandas Series，nan值会被忽略。label是一个字符串，当Hist绘制出来时会出现在图例上。</p>
+
+<p>图2.1展示出了结果。最常见的值，叫做mode,是7磅。分布大致呈钟形，是分布图的一般形状，也叫作高斯分布图。但与正态分布不同，这种分布是不对称的，它有一个尾巴，向左延伸比向右延伸更远。</p>
+
+<p>图2.2展示birthwgt_oz的直方图，是婴儿体重的ounces部分。理论上我们希望这个分布是均匀的；即所有的值都有相同的频率。事实上，0要比其它值更常见，1和15更少见，可能因为答卷人对接近整数的婴儿体重取整了。</p>
+
+<p>图2.3展示了agepreg的直方图，母亲妊娠结束时的年龄。模式是21年。分布大致是钟形的，但在这种情况下，尾巴延伸到右边比左边更远。大部分母亲是20多岁，少部分在30多岁。</p>
+
+<p>图2.4展示了prglngth的直方图，即孕周的长度。目前为止最常见的是39周。左边的尾巴比右边的长；早产婴儿很常见，但是怀孕很少超过43周，这种情况下医生经常会干预。</p>
+
+<h3 id="2-5-outliers极端值">2.5 Outliers极端值</h3>
+
+<p>看直方图，很容易看出最常见的值和分布图的形状，但是不常见的值并不总是可见的。</p>
+
+<p>在进行之前，检查异常是一个好方法，异常值可能是测量和记录中的错误，也可能是罕见事件的精确报告。</p>
+
+<p>Hist提供了Largest和Smallest方法，值入整数n,返回n个最大或最小的值：</p>
+
+<pre><code>for weeks, freq in hist.Smallest(10):
+    print(weeks, freq)
+</code></pre>
+
+<p>在活产的怀孕长度的列表中，10个最小的值是[0, 4, 9, 13, 17, 18, 19, 20, 21, 22]. 小于10周的值确定是错误的，比较合理的解释是极端值没有正确的编码。高于30周的值可能是合理的。10和30周之间很难确认；一些值可能是错误的，但是一些代表了早产。</p>
+
+<p>在列表的另一端，最高值是：</p>
+
+<pre><code>weeks count
+43 148
+44 46
+45 10
+46 1
+47 1
+48 7
+50 2
+</code></pre>
+
+<p>如果怀孕超过42周，大部分医生建议引产，所以一些lqta的值是令人惊讶的。特别是，50周看起来在医学上是不可能的。</p>
+
+<p>处理极端值最好的方式取决于&rdquo;领域知识&rdquo;，即数据来自何处以及他们的含义。这取决于你打算执行什么分析。</p>
+
+<p>在这个例子中，初衷问题是第一个婴儿是否早（或晚）。当人们问这个问题时，他们通常对足月妊娠感兴趣，因此我将着重于怀孕超过27周的分析。</p>
+
+<h3 id="2-6-first-babies第一胎">2.6 First babies第一胎</h3>
+
+<p>现在我们可以比较第一胎和其它胎的怀孕长度分布图。我用birthord把DataFrame中活产区分出来并计算他们的直方图：</p>
+
+<pre><code>firsts = live[live.birthord == 1]
+others = live[live.birthord != 1]
+
+first_hist = thinkstats2.Hist(firsts.prglngth)
+other_hist = thinkstats2.Hist(others.prglngth)
+</code></pre>
+
+<p>然后我绘制了同样X轴的直方图：</p>
+
+<pre><code>width = 0.45
+thinkplot.PrePlot(2)
+thinkplot.Hist(first_hist, align='right', width=width)
+thinkplot.Hist(other_hist, align='left', width=width)
+thinkplot.Show(xlabel='weeks', ylabel='frequency',
+               xlim=[27, 46])
+</code></pre>
+
+<p>thinkplot.PrePlot需要传入我们计划绘制直方图的数量；它用这个信息决定一个颜色集合。</p>
+
+<p>thinkplot.Hist通常用align = &lsquo;center&rsquo;所以每个柱处在它的值的中间。在这张图里，我用了align = &lsquo;right&rsquo;和 align = &lsquo;left&rsquo;在值的两边放置相应的柱子。</p>
+
+<p>width=0.45，两条柱子的总宽是0.9，在每一对柱子间留一些空白。</p>
+
+<p>最后，我调整X轴只显示27到46周之间的数据。图2.5展示了结果。</p>
+
+<p>直方图是有用的因为他们直接显示出了最常见的值。但他们不是比较两个分布图的最好的选择。在这个例子中，&rdquo;first babies&rdquo;比其它胎要少，所以直方图中一些明显差异是由于样本大小造成的。在下一章中我们利用概率质量函数来解决这个问题。</p>
+
+<h3 id="2-7-summarizing-distributions总结分布">2.7 Summarizing distributions总结分布</h3>
+
+<p>一个直方图是一个样例分布的完整描述；即给出一个直方图，我们可以重新组织样例的值（不按他们的顺序）。</p>
+
+<p>如果分布的细节是重要的，那么可能需要呈现直方图。但是我们经常需要用一些描述性统计来总结分布。</p>
+
+<p>我们可能要报告的一些特点是：
+- 中心趋势：值会倾向于围绕某一个特定点聚集吗？
+- 模式：有多个集群吗？
+- 范围：值有多大的可变性？
+- 尾巴：当我们离开某一模式时概率会下降的有多快？
+- 离群值：是否有远离模式的极端值？</p>
+
+<p>回答这些问题的统计设计叫做summary statistics总结统计。目前最常见的汇总统计是mean平均值，它用来描述分布的中心趋势。</p>
+
+<p>如果你有n个值的样例，x_i,平均值，\overline{x}, 是值的总和除以值的个数。换句话：</p>
+
+<p>&ldquo;mean&rdquo;和&rdquo;average&rdquo;通常可以直接互换，但是我做了一些区分：
+- &ldquo;mean&rdquo;，样本的&rdquo;平均值&rdquo;是用前面公式计算的摘要统计量。
+- &ldquo;average&rdquo; &ldquo;平均值&rdquo;是你可以用来描述一个中心趋势的几个汇总统计数据之一。</p>
+
+<p>有时平均值是一个数据值集合的好的描述。比如，苹果几乎都是同样的大小（至少超市是卖的一样的）。所以如果我买6个苹果，总重3磅，有理由说他们每个重0.5磅。</p>
+
+<p>但南瓜品种更多。假如我在花园里种了几个品种，有一天我收获了三种南方，每个重1磅，两个南瓜派分别重3磅，一个大西洋GiantR南瓜重591磅。这个样本的平均值是100磅，但如果我告诉你：我菜园里的南瓜平均重100磅，那将是误导性的。在这个例子中，没有有意义的平均值因为没有典型的南瓜。</p>
+
+<h3 id="2-8-variance方差">2.8 Variance方差</h3>
+
+<p>如果没有一个数据能总结南瓜的我不是，我们可以用两个数字表达会好一点：均值和方差。</p>
+
+<p>方差是一种摘要统计量，用于描述分布的变化或分布。一组值的方差是：</p>
+
+<p>项x_i - \overline{x}被称为&rdquo;偏离平均值&rdquo;，所以方差是均方差。方差的平均根，S，是标准偏差。</p>
+
+<p>如果你有经验，你可能会看到一个分母是n-1的方差的公式，而不是n. 这个统计是用来估计人口的方差。我们将在第8章讲到这一点。</p>
+
+<p>Pandas数据结构提供计算均值、方差和标准偏差的方法：</p>
+
+<pre><code>mean = live.prglngth.mean()
+var = live.prglngth.var()
+std = live.prglngth.std()
+</code></pre>
+
+<p>在所有活产中，怀孕长度的均值是38.6周，标准偏离是2.7周，即我们期望2-3周的偏离是常见的。</p>
+
+<p>怀孕长度的方差是7.3，这很难解释，尤其单位是周的平方，或平方周。在一些计算中方差是有用的，但不是一个好的汇总统计量。</p>
+
+<h3 id="2-9-effect-size规模效应">2.9 Effect size规模效应</h3>
+
+<p>规模效应是一个摘要统计量，用于描述规模大小。比如，为了描述两组之间的区别，一个显著的选择是均值差。</p>
+
+<p>第一胎的妊娠周期均值是38.601；其他胎是38.523.差值是0.078周，13小时多。作为典型怀孕周期的一小部分，这种差异约为0.2%。</p>
+
+<p>如果我们假定这个估计是准确的，那么这种差别就没有实际的后果。事实上，如果不观察大师的怀孕，就不可能有人注意到这种差别。</p>
+
+<p>另一种传达规模大小的方法是比较组之间的差异和组内的变异性。Cohen&rsquo;s d是就是用来做这种统计的，它的定义：</p>
+
+<p>Python代码：</p>
+
+<pre><code>def CohenEffectSize(group1, group2):
+	diff = group1.mean() - group2.mean()
+	var1 = group1.var()
+	var2 = group2.var()
+	n1, n2 = len(group1), len(group2)
+	pooled_var = (n1 * var1 + n2 * var2) / (n1 + n2)
+	d = diff / math.sqrt(pooled_var)
+	return d
+</code></pre>
+
+<p>在这个例子中，均值差是0.029标准偏差，是很小的。从这个角度来看，男女身高差是1.7个标准差。</p>
+
+<h3 id="2-10-reporting-results-报告结果">2.10 Reporting results 报告结果</h3>
+
+<p>我们有好几种方式描述第一胎和其他胎怀孕周期的差别。那我们怎么报告这些结果呢？</p>
+
+<p>答案取决于谁在问这个问题。科学家可能对任何真实的效果感兴趣，无论多小。一个医生可能只关心具有临床意义的效果，也就是说，影响治疗决策的差异。孕妇可能对与她有关的结果感兴趣，比如早或晚的概率。</p>
+
+<p>你报告结果的方式也取决于你的目标。如果你试图证明效果的重要性，你可以选择强调差异的汇总统计数据。如果你想让病人放心，你可以选择统计数据，把这些差异放在上下文中。</p>
+
+<p>当然你的决定也应该以职业道德为指导。有说服力是可以的；你应该设计一个可以清晰讲述故事的统计报告和可视化的。但你也应该尽最大努力使你的报告诚实，承认不确定性和局限性。</p>
+
+<h3 id="2-11-exercises练习">2.11 Exercises练习</h3>
+
+<p>练习2.1基于这章的结果，假设你被要求总结你从第一胎是否会吃到学到什么。</p>
+
+<h3 id="2-12-glossary词汇表">2.12 Glossary词汇表</h3>
+
+<ul>
+<li>分布：在样本中某个值的出现和频率。</li>
+<li>直方图：值和频率的映射，或展示该映射结果的图。</li>
+<li>频率：样本中某个值出现的次数。</li>
+<li>模式：样本是常见的值</li>
+<li>正态分布：理想情况是一个钟形分布；也称为高斯分布。</li>
+<li>均匀分布：所有值具有相同频率的分布。</li>
+<li>尾巴：分布在高低两极的部分。</li>
+<li>集中趋势：样本或人口的特征；直观地说，它是一个平均值或典型值。</li>
+<li>离群值：远离集中趋势的值。</li>
+<li>传播：分布中的值如何展开的度量。</li>
+<li>汇总统计：量化某一分布的某一方面，如集中趋势或散布的统计数据。</li>
+<li>方差：常用于量化传播的摘要统计量。</li>
+<li>标准差：方差的平方根，也用作度量散布。</li>
+<li>效应大小：一种摘要统计量，用于量化不同群体之间的效应的大小。</li>
+<li>临床意义：一个结果，如群体之间的差异，在实践中是相关的。</li>
+</ul>
+
+<h2 id="probability-mass-functions">Probability mass functions</h2>
+
+<h3 id="3-1-pmfs">3.1 Pmfs</h3>
+
+<h3 id="3-2-plotting-pmfs">3.2 Plotting PMFs</h3>
+
+<h3 id="3-3-other-visulizations">3.3 Other visulizations</h3>
+
+<h3 id="3-4-the-class-size-paradox">3.4 The class size paradox</h3>
+
+<h3 id="3-5-dataframe-indexing">3.5 DataFrame indexing</h3>
+
+<h3 id="3-6-exercises">3.6 Exercises</h3>
+
+<h3 id="3-7-glossary">3.7 Glossary</h3>
+
+<h2 id="4-cumulative-distribution-functions">4 Cumulative distribution functions</h2>
+
+<h3 id="4-1-the-limits-of-pmfs">4.1 THe limits of PMFs</h3>
+
+<h3 id="4-2-percentiles">4.2 Percentiles</h3>
+
+<h3 id="4-3-cdfs">4.3 CDFs</h3>
+
+<h3 id="4-4-representing-cdfs">4.4 Representing CDFs</h3>
+
+<h3 id="4-5-comparing-cdfs">4.5 Comparing CDFs</h3>
+
+<h3 id="4-6-percentile-based-statistics">4.6 Percentile-based statistics</h3>
+
+<h3 id="4-7-random-numbers">4.7 Random numbers</h3>
+
+<h3 id="4-8-comparing-percentile-ranks">4.8 Comparing percentile ranks</h3>
+
+<h3 id="4-9-exercises">4.9 Exercises</h3>
+
+<h3 id="4-10-glossary">4.10 Glossary</h3>
+
+<h2 id="5-modeling-distributions">5 Modeling distributions</h2>
+
+<h3 id="5-1-the-exponential-distribution">5.1 The exponential distribution</h3>
+
+<h3 id="5-2-the-normal-distribution">5.2 the normal distribution</h3>
+
+<h3 id="5-3-normal-probability-plot">5.3 Normal probability plot</h3>
+
+<h3 id="5-4-the-lognormal-distribution">5.4 The lognormal distribution</h3>
+
+<h3 id="5-5-the-pareto-distribution">5.5 The pareto distribution</h3>
+
+<h3 id="5-6-generating-random-numbers">5.6 Generating random numbers</h3>
+
+<h3 id="5-7-why-model">5.7 Why model?</h3>
+
+<h3 id="5-8-exercises">5.8 Exercises</h3>
+
+<h3 id="5-9-glossary">5.9 Glossary</h3>
+
+<h2 id="6-probability-density-functions">6 Probability density functions</h2>
+
+<h3 id="6-1-pdfs">6.1 PDFs</h3>
+
+<h3 id="6-2-kernel-density-estimation">6.2 Kernel density estimation</h3>
+
+<h3 id="6-3-the-distribution-framework">6.3 The distribution framework</h3>
+
+<h3 id="6-4-hist-implementation">6.4 Hist implementation</h3>
+
+<h3 id="6-5-pmf-implementation">6.5 Pmf implementation</h3>
+
+<h3 id="6-6-cdf-implementation">6.6 Cdf implementation</h3>
+
+<h3 id="6-7-moments">6.7 Moments</h3>
+
+<h3 id="6-8-skewness">6.8 Skewness</h3>
+
+<h3 id="6-9-exercises">6.9 Exercises</h3>
+
+<h3 id="6-10-glossary">6.10 Glossary</h3>
+
+<h2 id="7-relationships-between-variables">7 Relationships between variables</h2>
+
+<h3 id="7-1-scatter-plots">7.1 Scatter plots</h3>
+
+<h3 id="7-2-characterizing-relationships">7.2 Characterizing relationships</h3>
+
+<h3 id="7-3-correlation">7.3 Correlation</h3>
+
+<h3 id="7-4-covariance">7.4 Covariance</h3>
+
+<h3 id="7-5-pearson-s-correlation">7.5 Pearson&rsquo;s correlation</h3>
+
+<h3 id="7-6-nonlinear-relationships">7.6 Nonlinear relationships</h3>
+
+<h3 id="7-7-spearmans-rank-correlation">7.7 Spearmans&rsquo; rank correlation</h3>
+
+<h3 id="7-8-correlation-and-causation">7.8 Correlation and causation</h3>
+
+<h3 id="7-9-exercises">7.9 Exercises</h3>
+
+<h3 id="7-10-glossary">7.10 Glossary</h3>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>736809</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+      <div id="cyReward" role="cylabs" data-use="reward"></div>
+      <script src="//changyan.itc.cn/js/lib/jquery.js"></script>
+      <script src="//changyan.sohu.com/js/changyan.labs.https.js?appid=cytsuhDns"></script>
+      <div id="SOHUCS" sid="/post/think-stats-chapter-2/" ></div>
+      <script>
+      (function(){
+      var appid = 'cytsuhDns';
+      var conf = 'prod_2ed8389aa7aba905dc76e2051c5aa7ee';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 喵大人的空间</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://www.gmiao.top/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-113963876-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0639f40880962f40d8ee87a4582274a0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

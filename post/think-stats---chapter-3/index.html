@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title></title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Zhaoxia Guo" />
+  <meta name="description" content="Think Stats - Chapter 3 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 3. Probability mass functions概率质量函数 本章代码在probability.py中。
+3.1 Pmfs 另一种表示分布的方式是概率质量函数(PMF)，即每个值与它的概率的映射。概率是在同样样本大小n中一部分的频率。从频率得到概率，我们可以除以n,这叫做正态化。
+给出一个Hist,我们可以生成一个值与概率映射的字典：
+n = hist.Total() d = {} for x, freq in hist.Items(): d[x] = freq / n  或者我们可以用Pmf类。就像Hist,Pmf结构可以传入一个list， pandas Series, dictionary, Hist或其它Pmf对象。下面是以List的例子：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; pmf = thinkstats2.Pmf([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; pmf Pmf({1: 0.2, 2: 0.4, 3: 0." />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="Think Stats - Chapter 3 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 3. Probability mass functions概率质量函数 本章代码在probability.py中。
+3.1 Pmfs 另一种表示分布的方式是概率质量函数(PMF)，即每个值与它的概率的映射。概率是在同样样本大小n中一部分的频率。从频率得到概率，我们可以除以n,这叫做正态化。
+给出一个Hist,我们可以生成一个值与概率映射的字典：
+n = hist.Total() d = {} for x, freq in hist.Items(): d[x] = freq / n  或者我们可以用Pmf类。就像Hist,Pmf结构可以传入一个list， pandas Series, dictionary, Hist或其它Pmf对象。下面是以List的例子：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; pmf = thinkstats2.Pmf([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; pmf Pmf({1: 0.2, 2: 0.4, 3: 0." />
+    <meta name="twitter:image" content="http://www.gmiao.top/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="Think Stats - Chapter 3 Exploratory Data Analysis in Python Version 2.0.35 Allen B. Downey Green Tea Press Needham, Massachusetts 3. Probability mass functions概率质量函数 本章代码在probability.py中。
+3.1 Pmfs 另一种表示分布的方式是概率质量函数(PMF)，即每个值与它的概率的映射。概率是在同样样本大小n中一部分的频率。从频率得到概率，我们可以除以n,这叫做正态化。
+给出一个Hist,我们可以生成一个值与概率映射的字典：
+n = hist.Total() d = {} for x, freq in hist.Items(): d[x] = freq / n  或者我们可以用Pmf类。就像Hist,Pmf结构可以传入一个list， pandas Series, dictionary, Hist或其它Pmf对象。下面是以List的例子：
+&amp;gt;&amp;gt;&amp;gt; import thinkstats2 &amp;gt;&amp;gt;&amp;gt; pmf = thinkstats2.Pmf([1, 2, 2, 3, 5]) &amp;gt;&amp;gt;&amp;gt; pmf Pmf({1: 0.2, 2: 0.4, 3: 0." />
+  <meta property="og:url" content="http://www.gmiao.top/post/think-stats---chapter-3/" />
+  <meta property="og:image" content="http://www.gmiao.top/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.36" />
+
+
+<link rel="canonical" href="http://www.gmiao.top/post/think-stats---chapter-3/" />
+<link rel="alternative" href="http://www.gmiao.top/index.xml" title="喵大人的空间" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="cclCN1vd5XZIHBrt1QgxLBs5NeKj9AmDa-Aa31BXLqQ" />
+<meta name="msvalidate.01" content="" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="喵大人的空间" />
+<meta name="msapplication-tooltip" content="喵大人的空间" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://www.gmiao.top/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://www.gmiao.top/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://www.gmiao.top/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://www.gmiao.top/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://www.gmiao.top/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://www.gmiao.top/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://www.gmiao.top/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#SOHUCS"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://www.gmiao.top/img/avatar.jpeg" alt="Avatar">
+  
+  <h2 class="title">喵大人的空间</h2>
+  
+  <p class="subtitle">✧(•̀ω•́)✧</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/post">文章</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://www.gmiao.top/about/">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:guozhaoxia123@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/guozhaoxia007" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/img/wechat-qrcode.jpeg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://www.gmiao.top/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+      <p class="post-meta">@Zhaoxia Guo · Jan 1, 0001 · 3 min read</p>
+    </header>
+    <article class="post-content">
+
+<h1 id="think-stats-chapter-3-http-greenteapress-com-thinkstats2-thinkstats2-pdf"><a href="http://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats - Chapter 3</a></h1>
+
+<h5 id="exploratory-data-analysis-in-python">Exploratory Data Analysis in Python</h5>
+
+<h5 id="version-2-0-35">Version 2.0.35</h5>
+
+<h5 id="allen-b-downey">Allen B. Downey</h5>
+
+<h5 id="green-tea-press">Green Tea Press</h5>
+
+<h5 id="needham-massachusetts">Needham, Massachusetts</h5>
+
+<h2 id="3-probability-mass-functions概率质量函数">3. Probability mass functions概率质量函数</h2>
+
+<p>本章代码在probability.py中。</p>
+
+<h3 id="3-1-pmfs">3.1 Pmfs</h3>
+
+<p>另一种表示分布的方式是概率质量函数(PMF)，即每个值与它的概率的映射。概率是在同样样本大小n中一部分的频率。从频率得到概率，我们可以除以n,这叫做正态化。</p>
+
+<p>给出一个Hist,我们可以生成一个值与概率映射的字典：</p>
+
+<pre><code>n = hist.Total()
+d = {}
+for x, freq in hist.Items():
+    d[x] = freq / n
+</code></pre>
+
+<p>或者我们可以用Pmf类。就像Hist,Pmf结构可以传入一个list， pandas Series, dictionary, Hist或其它Pmf对象。下面是以List的例子：</p>
+
+<pre><code>&gt;&gt;&gt; import thinkstats2
+&gt;&gt;&gt; pmf = thinkstats2.Pmf([1, 2, 2, 3, 5])
+&gt;&gt;&gt; pmf
+Pmf({1: 0.2, 2: 0.4, 3: 0.2, 5: 0.2})
+</code></pre>
+
+<p>Pmf被正态化的，所以总概率是1.</p>
+
+<p>Pmf和Hist对象在许多方面都是类似的；实际上，他们从一个通用父类继承了很多方法。比如，两者的方法Values和Items运行方式一样。最大的不同是，Hist是值与次数的映射，Pmf是值与概率的映射。</p>
+
+<p>要看值关联的概率，用Prob:</p>
+
+<pre><code>&gt;&gt;&gt; pmf.Prob(2)
+0.4
+</code></pre>
+
+<p>括号运算符等同于：</p>
+
+<pre><code>&gt;&gt;&gt; pmf[2]
+0.4
+</code></pre>
+
+<p>你可以修改一个已经存在的Pmf，通过增大某个值的概率：</p>
+
+<pre><code>&gt;&gt;&gt; pmf.Incr(2, 0.2)
+&gt;&gt;&gt; pmf.Prob(2)
+&gt;&gt;&gt; 
+0.6
+</code></pre>
+
+<p>或者你可以对一个因子的概率做乘法：</p>
+
+<pre><code>&gt;&gt;&gt; pmf.Mult(2 0.5)
+&gt;&gt;&gt; pmf.Prob(2)
+0.3
+</code></pre>
+
+<p>如果你修改一个Pmf,结果可能不是正态化的；即，概率可以不能累加到1.为了检查，你可以调用Total，返回概率和：</p>
+
+<pre><code>&gt;&gt;&gt; pmf.Total()
+0.9
+</code></pre>
+
+<p>为了重新正态化，调用Normalize：</p>
+
+<pre><code>&gt;&gt;&gt; pmf.Normalize()
+&gt;&gt;&gt; pmf.Total()
+1.0
+</code></pre>
+
+<p>Pmf对象提供Copy方法，你可以创造和修改它的备份，而不影响原数据。</p>
+
+<p>这一章的符号似乎不一致，但是是系统的：我用Pmf作为类的名称，pmf是类的实例，PMF是概率质量函数的数学概念。</p>
+
+<h3 id="3-2-plotting-pmfs-绘图">3.2 Plotting PMFs 绘图</h3>
+
+<p>thinkplot提供Pmfs绘图的两种方式：</p>
+
+<ul>
+<li>柱状图，你可以用thinkplot.Hist.Bar，如果Pmf里的值的个数小的话这个最有用。</li>
+<li>阶梯函数，你可以用thinkplot.Pmf. 如果值有很多的话且Pmf是顺滑的话用这个选项最有用。这个函数也能用在Hist上。</li>
+</ul>
+
+<p>另外，pyplot提供一个叫hist的函数，传入值的序列，计算直方图并绘制它。自从我用了Hist对象，我通常不用pyplot.hist.</p>
+
+<p>图3.1展示了第一胎的怀孕周期的PMFs，左边是bar图，右边是step function.</p>
+
+<p>通过绘制PMF，我们可以比较两个分布图而不会被样本大小的不同而误导。在这张图上，第一胎看起来似乎比其他更不可能准时到达（第39周），并且更有可能迟到（第41周和42周）</p>
+
+<p>图3.1：第一胎和其他胎怀孕周期的PMF，用bar图和step函数。</p>
+
+<pre><code>thinkplot.PrePlot(2, cols=2)
+thinkplot.Hist(first_pmf, align='right', width=width)
+thinkplot.Hist(other_pmf, align='left', width=width)
+thinkplot.Config(xlabel='weeks',
+                 ylabel='probability',
+                 axis=[27, 46, 0, 0.6])
+thinkplot.PrePlot(2)
+thinkplot.SubPlot(2)
+thinkplot.Pmfs([first_pmf, other_pmf])
+thinkplot.Show(xlabel='weeks',
+axis=[27, 46, 0, 0.6])
+</code></pre>
+
+<p>PrePlot传入可选参数rows和cols生成一个数字网格，在这个例子一行两个数字。第一个数字（左边）用thinkplot.Hist展示了Pmfs,就像我们之前看到的。</p>
+
+<p>第二个调用PrePlot重置颜色生成。SubPlot转换成第二个数字（右边），用thinkplot.Pmfs展示Pmfs. 我用axis选择保证两个数字在同样的X轴上，通常来说如果你计划比较两个数字这样做是个好主意。</p>
+
+<h3 id="3-3-other-visulizations-其它可视化">3.3 Other visulizations 其它可视化</h3>
+
+<p>当你探索数据并尝试识别模式和关系用直方图和PMFs是有用的。一旦你知道该怎么做，下一步是设计一个可视化，使得你要识别的模式尽可能清晰。</p>
+
+<p>在NSFG数据里，分布图最大的不同是模式。所以放大图表的那部分，并转换数据来强调差异是有意义的。</p>
+
+<pre><code>weeks = range(35, 46)
+diffs = []
+for week in weeks:
+	p1 = first_pmf.Prob(week)
+	p2 = other_pmf.Prob(week)
+	diff = 100 * (p1 - p2)
+	diffs.append(diff)
+thinkplot.Bar(weeks, diffs)
+</code></pre>
+
+<p>在这段代码里，weeks是weeks的范围；diffs是两个PMFs百分比的差异。图3.2用bar表显示了结果。这张图使得模式更加清晰：第一胎更不可能在39周出生，然而更可能在41和42周出生。</p>
+
+<p>现在我们只能暂时地得出这个结论。我们使用相同的数据集来识别一个明显的差异，然后选择一个使差异明显的可视化。我们不能肯定这种效应是真实的，可能是随机变化造成的。我们稍后会讨论这个问题。</p>
+
+<h3 id="3-4-the-class-size-paradox-班级规模悖论">3.4 The class size paradox 班级规模悖论</h3>
+
+<p>在我们进行下一步之前，我想演示一种用PMF对象做的计算，我把这个例子称为『类大小悖论』</p>
+
+<p>在许多美国高校里，学生老师比例约为10：1.但是学生们常常惊讶地发现我们的平均班级人数超过了10.造成这种差异的原因有两个：</p>
+
+<ul>
+<li>学生通常每学期上4到5种课，但教授通常教1或2种课</li>
+<li>学生喜欢的小课堂的数量较少，但是在一个大的班级学生人数比较大。</li>
+</ul>
+
+<p>第一个效果是显而易见的，至少一次被指出；第二个更微妙。让我们看一个例子。假设一所大学在一学期内开设65门课程，规模如下：</p>
+
+<blockquote>
+<p>size count</p>
+
+<p>5- 9 8</p>
+
+<p>10-14 8</p>
+
+<p>15-19 14</p>
+
+<p>20-24 4</p>
+
+<p>25-29 6</p>
+
+<p>30-34 12</p>
+
+<p>35-39 8</p>
+
+<p>40-44 3</p>
+
+<p>45-49 2</p>
+</blockquote>
+
+<p>如果你问Dean的平均课程大小，他会构造一个PMF，计算平均值，并报告平均课堂大小是23.7.下面是代码：</p>
+
+<pre><code>d = { 7: 8, 12: 8, 17: 14, 22: 4,
+      27: 6, 32: 12, 37: 8, 42: 3, 47: 2 }
+pmf = thinkstats2.Pmf(d, label='actual')
+print('mean', pmf.Mean())
+</code></pre>
+
+<p>但是如果你研究一群学生，问他们课堂上有多少学生，并计算平均值，你会认为平均课堂大小会大一些。让我们看一下有多大。</p>
+
+<p>首先，我计算学生所观察到的分布，其中每个班级大小的概率与班上学生的数量有『偏差』</p>
+
+<pre><code>def BiasPmf(pmf, label):
+	new_pmf = pmf.Copy(label=label)
+	for x, p in pmf.Items():
+	new_pmf.Mult(x, x)
+	new_pmf.Normalize()
+	return new_pmf
+</code></pre>
+
+<p>每个班级的大小x，我们乘以x的概率，学生观察到的班级大小的数量。结果是一个新的Pmf代表差异分布。</p>
+
+<p>现在我们可以绘制出实际的和观察到的分布图：</p>
+
+<pre><code>biased_pmf = BiasPmf(pmf, label='observed')
+thinkplot.PrePlot(2)
+thinkplot.Pmfs([pmf, biased_pmf])
+thinkplot.Show(xlabel='class size', ylabel='PMF')
+</code></pre>
+
+<p>图3.3展示出了结果。在偏态分布中，小班级较少大班级较多。有偏分布均值为29.1,比实际均值高出近25%。</p>
+
+<p>也可以反转这个操作。假设你想在大学里找到班级规模的分布，但你不能从Dean那里获得可靠的数据。另一种选择是随机挑选学生，问他们班上有多少学生。</p>
+
+<p>由于我们刚才看到的原因，结果会有偏差，但你可以用它来估计实际的分布情况。这是unbiases一个Pmf的函数：</p>
+
+<pre><code>def UnbiasPmf(pmf, label):
+	new_pmf = pmf.Copy(label=label)
+	for x, p in pmf.Items():
+	new_pmf.Mult(x, 1.0/x)
+	new_pmf.Normalize()
+	return new_pmf
+</code></pre>
+
+<p>它跟BiasPmf是相似的；唯一的区别是它会除以每个概率而不是乘以。</p>
+
+<h3 id="3-5-dataframe-indexing-dataframe索引">3.5 DataFrame indexing DataFrame索引</h3>
+
+<p>在1.4节里我们读取了一个pandas DataFrame并且它选择和修改数据列。现在我们看行的选择。首先，我创建了一个随机数字的NumPy数组并用它初始化一个dataFrame:</p>
+
+<pre><code>&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; import pandas
+&gt;&gt;&gt; array = np.random.randn(4, 2)
+&gt;&gt;&gt; df = pandas.DataFrame(array)
+&gt;&gt;&gt; df
+0 1
+0 -0.143510 0.616050
+1 -1.489647 0.300774
+2 -0.074350 0.039621
+3 -1.369968 0.545897
+</code></pre>
+
+<p>默认下，行和列是从0开始的数字，但是你可以提供列名：</p>
+
+<pre><code>&gt;&gt;&gt; columns = ['A', 'B']
+&gt;&gt;&gt; df = pandas.DataFrame(array, columns=columns)
+&gt;&gt;&gt; df
+A B
+0 -0.143510 0.616050
+1 -1.489647 0.300774
+2 -0.074350 0.039621
+3 -1.369968 0.545897
+</code></pre>
+
+<p>你也可以提供行名。行名集合叫做index; 行名本身叫做labels.</p>
+
+<pre><code>&gt;&gt;&gt; index = ['a', 'b', 'c', 'd']
+&gt;&gt;&gt; df = pandas.DataFrame(array, columns=columns, index=index)
+&gt;&gt;&gt; df
+A B
+a -0.143510 0.616050
+b -1.489647 0.300774
+c -0.074350 0.039621
+d -1.369968 0.545897
+</code></pre>
+
+<p>就像上一章我们看到的，简单的索引选择一个列，返回一个序列：</p>
+
+<pre><code>&gt;&gt;&gt; df['A']
+a -0.143510
+b -1.489647
+c -0.074350
+d -1.369968
+Name: A, dtype: float64
+</code></pre>
+
+<p>通过label选择行，你可以用loc属性，返回一个序列：</p>
+
+<pre><code>&gt;&gt;&gt; df.loc['a']
+A -0.14351
+B 0.61605
+Name: a, dtype: float64
+</code></pre>
+
+<p>如果你知道某行的位置，而不是label，你可以用iloc属性，也返回一个序列。</p>
+
+<pre><code>&gt;&gt;&gt; df.iloc[0]
+A -0.14351
+B 0.61605
+Name: a, dtype: float64
+</code></pre>
+
+<p>loc传入一个label列表；返回一个DataFrame.</p>
+
+<pre><code>&gt;&gt;&gt; indices = ['a', 'c']
+&gt;&gt;&gt; df.loc[indices]
+A B
+a -0.14351 0.616050
+c -0.07435 0.039621
+</code></pre>
+
+<p>最后，你可以通过label用片断选择一段行:</p>
+
+<pre><code>&gt;&gt;&gt; df['a':'c']
+A B
+a -0.143510 0.616050
+b -1.489647 0.300774
+c -0.074350 0.039621
+</code></pre>
+
+<p>或者用位置：</p>
+
+<pre><code>&gt;&gt;&gt; df[0:2]
+A B
+a -0.143510 0.616050
+b -1.489647 0.300774
+</code></pre>
+
+<p>这个结果也是DataFrame，但是要注意第一个结果包括片断的结尾；第二个不包括。</p>
+
+<p>我的建议：如果你的行有labels而不是简单的数字，直接用label避免用数字位置。</p>
+
+<h3 id="3-6-exercises-练习">3.6 Exercises 练习</h3>
+
+<p>这些练习的解决方案在chap03soln.ipynb和chap03soln.py</p>
+
+<p>练习3.1就像班级大小悖论一样如果你调查孩子并问他们家里有多少小孩。有许多孩子的家庭更可能出现在你的样本中，没有孩子的家庭没有机会进入样本。</p>
+
+<p>使用可变NUMKDHH构建家中18岁以下儿童数量的实际分布。</p>
+
+<p>现在计算贝叶斯分布我们可以看到如果我们调查儿童并问他们家里有多少18岁以下儿童。</p>
+
+<p>绘制实际的和贝叶斯分布，并计算他们的平均值。你可以用chap03ex.pynb开始。</p>
+
+<p>练习3.2，在2.7节我们计算一个样本的平均值通过增加元素并除以n. 如果你提供一个PMF，你仍然可以计算均值，但是流程有点不同：</p>
+
+<h3 id="3-7-glossary">3.7 Glossary</h3>
+
+<ul>
+<li>概率质量函数（PMF）：表示从值到概率函数的分布的表示法</li>
+<li>概率：样本中一部分出现的频率</li>
+<li>正态化：次数除以样本大小得到一个概率</li>
+<li>索引：在pandas DataFrame中，一个特殊列的索引包括行的labels</li>
+</ul>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>736809</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+      <div id="cyReward" role="cylabs" data-use="reward"></div>
+      <script src="//changyan.itc.cn/js/lib/jquery.js"></script>
+      <script src="//changyan.sohu.com/js/changyan.labs.https.js?appid=cytsuhDns"></script>
+      <div id="SOHUCS" sid="/post/think-stats---chapter-3/" ></div>
+      <script>
+      (function(){
+      var appid = 'cytsuhDns';
+      var conf = 'prod_2ed8389aa7aba905dc76e2051c5aa7ee';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 喵大人的空间</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://www.gmiao.top/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-113963876-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0639f40880962f40d8ee87a4582274a0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

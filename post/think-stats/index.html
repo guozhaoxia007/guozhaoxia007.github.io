@@ -500,146 +500,223 @@ Name: pregordr, dtype: int64
 
 <h3 id="1-6-transformation">1.6 Transformation</h3>
 
+<p>当你导入数据，你经常不得不检查错误，处理特殊数据，不同格式数据转换和执行计算。这些操作叫作数据清理data cleaning.</p>
+
+<p>nsfg.py包括CleanFemPgre，我计划用途清理变量的函数。</p>
+
+<pre><code>def CleanFemPreg(df):
+	df.agepreg /= 100.0
+	na_vals = [97, 98, 99]
+	df.birthwgt_lb.replace(na_vals, np.nan, inplace=True)
+	df.birthwgt_oz.replace(na_vals, np.nan, inplace=True)
+	df['totalwgt_lb'] = df.birthwgt_lb + df.birthwgt_oz / 16.0
+</code></pre>
+
+<p>agepreg是妊娠结束时母亲的年龄。在数据文件中，agepreg被编码成centiyears整数。所以第一行agepreg除以100，是一个单位为年的符点数。</p>
+
+<p>birthwgt_lb和birthwgt_oz包括了活产婴儿的体重，单位是pounds和ounces。它有几个特殊编码：
+&gt; 97 NOT ASCERTAINED
+&gt; 98 REFUSED
+&gt; 99 DON&rsquo;T KNOW</p>
+
+<p>数据类型的特殊值如果处理不当是危险的，它们会生成假数据，比如99-pound的婴儿。replace方法用np.nan替换了那些值，一个特殊的符点数代表&rdquo;不是一个数字&rdquo;.inplace参数告诉replace方法去修改已存在的序列而不是新创建一个。</p>
+
+<p>在IEEE符点数标准里，如果有任一参数是nan那么所有的数学操作返回nan：</p>
+
+<pre><code>&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; np.nan / 100.0
+nan
+</code></pre>
+
+<p>所以用nan做计算是对的，大部分pandas函数可以合理处理nan。但是处理丢失数据成为一个复发问题。</p>
+
+<p>CleanFemPreg最后一行创建一个新列totalwgt_lb包含了pounds和ounces，合并成一个单独的数字，单位是pounds.</p>
+
+<p>一个重要提示：当你给DataFrame添加新列时，你必须使用dictionary语法，比如：</p>
+
+<pre><code># CORRECT
+df['totalwgt_lb'] = df.birthwgt_lb + df.birthwgt_oz / 16.0
+Not dot notation, like this:
+# WRONG!
+df.totalwgt_lb = df.birthwgt_lb + df.birthwgt_oz / 16.0
+</code></pre>
+
+<p>点操作符会给DataFrame对象添加一个新属性，但是这个属性不会被当作一个新的列。</p>
+
 <h3 id="1-7-validation">1.7 Validation</h3>
+
+<p>当把数据从一个软件环境导入到另一个环境时，可能会发生错误。当你熟悉一个新的数据集，你可能会正确地编译数据或避免误解。如果你花时间去验证数据，你会节省后面的时间并避免错误。</p>
+
+<p>一个验证数据的方式是计算基本的统计并和公开的结果比较。比如，NSFG代码包括了每个变量之和。这是一个输出结果的表，每个妊娠数据的编码结果：</p>
+
+<pre><code>value label Total
+1 LIVE BIRTH 9148
+2 INDUCED ABORTION 1862
+3 STILLBIRTH 120
+4 MISCARRIAGE 1921
+5 ECTOPIC PREGNANCY 190
+6 CURRENT PREGNANCY 352
+</code></pre>
+
+<p>序列类提供一个value_counts方法，计算每个值出现的次数。如果我们从DataFrame选择序列的输出结果，我们可以用value_counts比较公开的数据：</p>
+
+<pre><code>&gt;&gt;&gt; df.outcome.value_counts(sort=False)
+1 9148
+2 1862
+3 120
+4 1921
+5 190
+6 352
+</code></pre>
+
+<p>value_counts的结果是一个序列，sort=False不对Series的结果排序，顺序出现。</p>
+
+<p>通过比较公开表的结果，看起来输出结果是正确的。类似地，这是birthwgt_lb的公开表：</p>
+
+<pre><code>value label Total
+. INAPPLICABLE 4449
+0-5 UNDER 6 POUNDS 1125
+6 6 POUNDS 2223
+7 7 POUNDS 3049
+8 8 POUNDS 1889
+9-95 9 POUNDS OR MORE 799
+</code></pre>
+
+<p>这是值的次数：</p>
+
+<pre><code>&gt;&gt;&gt; df.birthwgt_lb.value_counts(sort=False)
+0 8
+1 40
+2 53
+3 98
+4 229
+5 697
+6 2223
+7 3049
+8 1889
+9 623
+10 132
+11 26
+12 10
+13 3
+14 3
+15 1
+51 1
+</code></pre>
+
+<p>6，7，8磅的次数合格，如果你总计0-5和9-95的次数，他们也是合格的。但是如果你仔细观察，你会发现有一个值是错误的，有一个51磅的婴儿。</p>
+
+<p>为了处理这个错误，我在CleanFemPreg加了一行：</p>
+
+<pre><code>df.loc[df.birthwgt_bl &gt; 20, 'birthwgt_lb'] = np.nan
+</code></pre>
+
+<p>这行代码把非法的值用np.nan替换了。属性loc提供了几种方式去选择DataFrame的行和列。在这个例子中，括号里的第一个表达式是行索引，第二个表达式是选择的列。</p>
+
+<p>表达式*df.birthwgt_lb &gt; 20*生成一个类型为bool的序列，True代表条件为真。当boolean序列被当作索引使用，它只会选择满足条件的元素。</p>
 
 <h3 id="1-8-interpretation">1.8 Interpretation</h3>
 
+<p>为了有效地处理数据，你不得不同时考虑两个层次：统计层次和内容层次。</p>
+
+<p>举个例子，让我们看下一些答卷人的输出结果序列。因为数据文件组织方式，我们要给每个答卷人收集的妊娠数据做一些处理。函数如下：</p>
+
+<pre><code>def MakePregMap(df):
+	d = defaultdict(list)
+	for index, caseid in df.caseid.iteritems():
+	d[caseid].append(index)
+	return d
+</code></pre>
+
+<p>df就是妊娠数据的DataFrame。iteritems方法枚举了妊娠数据的行数索引和caseid。</p>
+
+<p>d是一个字典，caseID映射到一个索引列表里。如果你不熟悉defaultdict，它在Python collections模块里。我们可以看到答卷人得到答卷人妊娠数据的索引。</p>
+
+<p>这个例子是一个答卷人，打印了她的妊娠数据输出结果列表：</p>
+
+<pre><code>&gt;&gt;&gt; caseid = 10229
+&gt;&gt;&gt; preg_map = nsfg.MakePregMap(df)
+&gt;&gt;&gt; indices = preg_map[caseid]
+&gt;&gt;&gt; df.outcome[indices].values
+[4 4 4 4 4 4 1]
+</code></pre>
+
+<p>indices是答卷人10229号的数据的索引列表。</p>
+
+<p>把这个列表当作索引放到df.outcome，选择出索引行并生成一个序列。我没有打印完整的序列，只打印了values属性，它是一个NumPy列表。</p>
+
+<p>输出代码1代表是一个活产。代码4代表流产，通常是由于没有已知的医学原因而自发终止的妊娠。</p>
+
+<p>从统计上看，这种答卷人并不少见。流产是常见的，还有其它答卷人也或多或少报告过。</p>
+
+<p>但是记住上下文，这个数据 告诉我们一个女人怀孕6次，每次都流产的故事。她最近的第7次怀孕是活产。如果我们对这个数据有同感，自然会被它所讲述的故事所感动。</p>
+
+<p>NSFG数据集里每个记录代表了一个给很多个人和疑难问题提供了真实答案的人。我们可以用这个数据回答有关家庭生活、生育和健康的统计问题。同时，我们有义务考虑这些数据代表的人，并向他们致敬和感激。</p>
+
 <h3 id="1-9-exercises">1.9 Exercises</h3>
 
-<h3 id="1-10-glossary">1.10 Glossary</h3>
+<p>源代码里的练习1.1节，可以看到一个名称叫chap01ex.ipynb的文件，是IPython notebook. 你可以从命令行启动IPython:</p>
 
-<h2 id="2-distributions">2 Distributions</h2>
+<pre><code>$ ipython notebook &amp;
+</code></pre>
 
-<h3 id="2-1-historgrams">2.1 Historgrams</h3>
+<p>如果安装了IPython，它会启动一个运行在后台的server,并打开一个浏览器看到这个notebook. 如果你不熟悉IPython，我建议你看一下 <a href="http://ipython.org/ipython-doc/stable/notebook/notebook.html">http://ipython.org/ipython-doc/stable/notebook/notebook.html</a>.</p>
 
-<h3 id="2-2-representing-histograms">2.2 Representing histograms</h3>
+<p>启动IPython notebook server:</p>
 
-<h3 id="2-3-plotting-histograms">2.3 Plotting histograms</h3>
+<pre><code>$ ipython notebook &amp;
+</code></pre>
 
-<h3 id="2-4-nsfg-variables">2.4 NSFG variables</h3>
+<p>它会打一个新的浏览器定位器，如果没有，启动提示会提供一个URL，通常是 <a href="http://localhost:8888">http://localhost:8888</a>.</p>
 
-<h3 id="2-5-outliers">2.5 Outliers</h3>
+<p>打开chap01ex.ipynb. 会有一些单元列出来，你应该去执行。其它的你也可以试试。</p>
 
-<h3 id="2-6-first-babies">2.6 First babies</h3>
+<p>这个练习的解决方案在chap01soln.ipynb</p>
 
-<h3 id="2-7-summarizing-distributions">2.7 Summarizing distributions</h3>
+<p>在练习1.2节，有一个文件chap01ex.py，使用这个文件写一个函数读取文件数据2002FemResp.dat.gz.</p>
 
-<h3 id="2-8-variance">2.8 Variance</h3>
+<p>变量pregnum用来记录每个答卷人的怀孕次数。打印这个次数并与公开结果比较。</p>
 
-<h3 id="2-9-effect-size">2.9 Effect size</h3>
+<p>你也可以交叉检验妊娠文件通过比较pregnum.</p>
 
-<h3 id="2-10-reporting-results">2.10 Reporting results</h3>
+<p>你可以使用nsfg.MakePregMap生成一个字典为每个caseid映射到pregnacy DataFrame的索引列表。</p>
 
-<h3 id="2-11-exercises">2.11 Exercises</h3>
+<p>这个解决方案在chap01soln.py.</p>
 
-<h3 id="2-12-glossary">2.12 Glossary</h3>
+<p>练习1.3，学习统计在项目上的应用的最好的方式。比如你想研究的问题：&rdquo;第一个婴儿是否会迟到&rdquo;</p>
 
-<h2 id="probability-mass-functions">Probability mass functions</h2>
+<p>想一些你个人感兴趣的问题，或者常规的观点，或有争议的话题，或有政治影响的问题，看看你是否能提出一个适合统计调查的问题。</p>
 
-<h3 id="3-1-pmfs">3.1 Pmfs</h3>
+<p>找一些数据帮助你解决这个问题。政府是好的数据来源因为这些公开的调研数据通常是免费的。比如 <a href="http://www.data.gov/">http://www.data.gov/</a>, <a href="http://www.science.gov/">http://www.science.gov/</a>, <a href="http://data.gov.uk/">http://data.gov.uk/</a>.</p>
 
-<h3 id="3-2-plotting-pmfs">3.2 Plotting PMFs</h3>
+<p>其中两个我最喜欢的数据集是综合社会调查<a href="http://www3.norc.org/gss+website/">http://www3.norc.org/gss+website/</a>, 欧洲社会调查<a href="http://222.europeansocialsurvey.org/">http://222.europeansocialsurvey.org/</a>.</p>
 
-<h3 id="3-3-other-visulizations">3.3 Other visulizations</h3>
+<p>如果你有已经回答了你的问题，仔细观察这个答案是否正确。数据或分析中可能存在缺陷，从而使结论不可靠。这种情况下，你可以对相同数据进行不同的分析，或者寻找更好的数据源。</p>
 
-<h3 id="3-4-the-class-size-paradox">3.4 The class size paradox</h3>
+<p>如果你找到一篇回答了你问题的论文，你应该可以拿到原始数据。许多作者会把数据放到网上，但是一些敏感数据你可能需要写信给作者，提供信息说明你使用数据的计划，或者同意一些条款。要坚持不懈！</p>
 
-<h3 id="3-5-dataframe-indexing">3.5 DataFrame indexing</h3>
+<h3 id="1-10-glossary-词汇表">1.10 Glossary 词汇表</h3>
 
-<h3 id="3-6-exercises">3.6 Exercises</h3>
-
-<h3 id="3-7-glossary">3.7 Glossary</h3>
-
-<h2 id="4-cumulative-distribution-functions">4 Cumulative distribution functions</h2>
-
-<h3 id="4-1-the-limits-of-pmfs">4.1 THe limits of PMFs</h3>
-
-<h3 id="4-2-percentiles">4.2 Percentiles</h3>
-
-<h3 id="4-3-cdfs">4.3 CDFs</h3>
-
-<h3 id="4-4-representing-cdfs">4.4 Representing CDFs</h3>
-
-<h3 id="4-5-comparing-cdfs">4.5 Comparing CDFs</h3>
-
-<h3 id="4-6-percentile-based-statistics">4.6 Percentile-based statistics</h3>
-
-<h3 id="4-7-random-numbers">4.7 Random numbers</h3>
-
-<h3 id="4-8-comparing-percentile-ranks">4.8 Comparing percentile ranks</h3>
-
-<h3 id="4-9-exercises">4.9 Exercises</h3>
-
-<h3 id="4-10-glossary">4.10 Glossary</h3>
-
-<h2 id="5-modeling-distributions">5 Modeling distributions</h2>
-
-<h3 id="5-1-the-exponential-distribution">5.1 The exponential distribution</h3>
-
-<h3 id="5-2-the-normal-distribution">5.2 the normal distribution</h3>
-
-<h3 id="5-3-normal-probability-plot">5.3 Normal probability plot</h3>
-
-<h3 id="5-4-the-lognormal-distribution">5.4 The lognormal distribution</h3>
-
-<h3 id="5-5-the-pareto-distribution">5.5 The pareto distribution</h3>
-
-<h3 id="5-6-generating-random-numbers">5.6 Generating random numbers</h3>
-
-<h3 id="5-7-why-model">5.7 Why model?</h3>
-
-<h3 id="5-8-exercises">5.8 Exercises</h3>
-
-<h3 id="5-9-glossary">5.9 Glossary</h3>
-
-<h2 id="6-probability-density-functions">6 Probability density functions</h2>
-
-<h3 id="6-1-pdfs">6.1 PDFs</h3>
-
-<h3 id="6-2-kernel-density-estimation">6.2 Kernel density estimation</h3>
-
-<h3 id="6-3-the-distribution-framework">6.3 The distribution framework</h3>
-
-<h3 id="6-4-hist-implementation">6.4 Hist implementation</h3>
-
-<h3 id="6-5-pmf-implementation">6.5 Pmf implementation</h3>
-
-<h3 id="6-6-cdf-implementation">6.6 Cdf implementation</h3>
-
-<h3 id="6-7-moments">6.7 Moments</h3>
-
-<h3 id="6-8-skewness">6.8 Skewness</h3>
-
-<h3 id="6-9-exercises">6.9 Exercises</h3>
-
-<h3 id="6-10-glossary">6.10 Glossary</h3>
-
-<h2 id="7-relationships-between-variables">7 Relationships between variables</h2>
-
-<h3 id="7-1-scatter-plots">7.1 Scatter plots</h3>
-
-<h3 id="7-2-characterizing-relationships">7.2 Characterizing relationships</h3>
-
-<h3 id="7-3-correlation">7.3 Correlation</h3>
-
-<h3 id="7-4-covariance">7.4 Covariance</h3>
-
-<h3 id="7-5-pearson-s-correlation">7.5 Pearson&rsquo;s correlation</h3>
-
-<h3 id="7-6-nonlinear-relationships">7.6 Nonlinear relationships</h3>
-
-<h3 id="7-7-spearmans-rank-correlation">7.7 Spearmans&rsquo; rank correlation</h3>
-
-<h3 id="7-8-correlation-and-causation">7.8 Correlation and causation</h3>
-
-<h3 id="7-9-exercises">7.9 Exercises</h3>
-
-<h3 id="7-10-glossary">7.10 Glossary</h3>
+<ul>
+<li>anecdotal evidence轶事证据: 通常是个人收集的证据，而不是经过糟心设计的研究。</li>
+<li>population人口：我们感兴趣的团体。&rdquo;Population&rdquo;通常指的是一群人，但这个词也用于其它科目。</li>
+<li>cross-sectional study横断面研究：在特定时间点收集人口数据的研究。</li>
+<li>cycle循环：在反复的横断面研究中，每次重复的研究被称为一个周期。</li>
+<li>longitudinal study纵向研究：随着时间的推移进行人口的研究，从同群人重复收集数据。</li>
+<li>record记录：在一个数据集，一个个人身上收集上的信息。</li>
+<li>respondent答卷人：参与调查的人。</li>
+<li>sample样例：用于收集数据的部分人口。</li>
+<li>representative代表：如果每个人都有同样的机会，样本是有代表性的。</li>
+<li>oversampling过采样：为了避免小样本的错误而增加子群体的代表性的技术。</li>
+<li>raw data原始数据：小的或没有检查，计算或解释的收集到的数据。</li>
+<li>recode: 基于原始数据计算得到的值。</li>
+<li>data cleaning数据清洗：一些处理包括验证数据，识别错误，数据类型和表示等之间的转换。</li>
+</ul>
 </article>
     <footer class="post-footer">
       
       <p class="post-copyright">
-        This post was published <strong>736751</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>736809</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
